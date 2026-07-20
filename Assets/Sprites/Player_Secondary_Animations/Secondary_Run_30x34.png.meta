@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Secondary_Run_30x34_0
+      name: Example_Multiple_30x34_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 7
         y: 0
         width: 23
-        height: 31
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64216ad30083daac0800000000000000
-      internalID: -3842353333391715770
+      spriteID: d9ac9593797221110800000000000000
+      internalID: 1230089178681297565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Run_30x34_1
+      name: Example_Multiple_30x34_1
       rect:
         serializedVersion: 2
         x: 37
         y: 0
-        width: 21
-        height: 32
+        width: 23
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,61 +171,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 828e070ebd8452ee0800000000000000
-      internalID: -1286542009343875032
+      spriteID: 8dd94bd4280745650800000000000000
+      internalID: 6220720690257239512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Run_30x34_2
+      name: Example_Multiple_30x34_2
       rect:
         serializedVersion: 2
         x: 67
-        y: 0
-        width: 21
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49aabe81a8ad8c620800000000000000
-      internalID: 2794723855441832596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Secondary_Run_30x34_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 22
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 91c5a65f3a08e42b0800000000000000
-      internalID: -5598395845089534951
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Secondary_Run_30x34_4
-      rect:
-        serializedVersion: 2
-        x: 125
         y: 0
         width: 23
         height: 31
@@ -237,19 +193,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e691d3eabb90c66c0800000000000000
-      internalID: -4148930455028295314
+      spriteID: 083df976e2b2aa230800000000000000
+      internalID: 3650777926244225920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Run_30x34_5
+      name: Example_Multiple_30x34_3
       rect:
         serializedVersion: 2
-        x: 157
+        x: 97
         y: 0
-        width: 21
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -259,41 +215,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df0eb2f9335563e20800000000000000
-      internalID: 3329942654689206525
+      spriteID: 85c57e2cb01c745e0800000000000000
+      internalID: -1925358059418854312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Run_30x34_6
+      name: Example_Multiple_30x34_4
       rect:
         serializedVersion: 2
-        x: 187
+        x: 127
         y: 0
-        width: 21
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ebe741c3a6977b2a0800000000000000
-      internalID: -6721770421645705538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Secondary_Run_30x34_7
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 0
-        width: 22
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -303,8 +237,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 028f5c57fa44ca250800000000000000
-      internalID: 5957211927490197536
+      spriteID: a648ab48e0b30dd40800000000000000
+      internalID: 5607046469618664554
       vertices: []
       indices: 
       edges: []
@@ -323,14 +257,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Secondary_Run_30x34_0: -3842353333391715770
-      Secondary_Run_30x34_1: -1286542009343875032
-      Secondary_Run_30x34_2: 2794723855441832596
-      Secondary_Run_30x34_3: -5598395845089534951
-      Secondary_Run_30x34_4: -4148930455028295314
-      Secondary_Run_30x34_5: 3329942654689206525
-      Secondary_Run_30x34_6: -6721770421645705538
-      Secondary_Run_30x34_7: 5957211927490197536
+      Example_Multiple_30x34_0: 1230089178681297565
+      Example_Multiple_30x34_1: 6220720690257239512
+      Example_Multiple_30x34_2: 3650777926244225920
+      Example_Multiple_30x34_3: -1925358059418854312
+      Example_Multiple_30x34_4: 5607046469618664554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

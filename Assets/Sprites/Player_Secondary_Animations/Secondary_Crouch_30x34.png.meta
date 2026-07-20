@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,45 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Secondary_Crouch_30x34_0
+      name: Example_Multiple_30x34_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 7
         y: 0
         width: 23
-        height: 24
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa8c63054875fbab0800000000000000
-      internalID: -4990173636310153046
+      spriteID: d9ac9593797221110800000000000000
+      internalID: 1230089178681297565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Crouch_30x34_1
+      name: Example_Multiple_30x34_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 37
         y: 0
         width: 23
-        height: 23
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81093a40bcc7e23a0800000000000000
-      internalID: -6688271185200574440
+      spriteID: 8dd94bd4280745650800000000000000
+      internalID: 6220720690257239512
       vertices: []
       indices: 
       edges: []
@@ -163,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 997130547640f5f43a584b242cd7c49c
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +173,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Secondary_Crouch_30x34_0: -4990173636310153046
-      Secondary_Crouch_30x34_1: -6688271185200574440
+      Example_Multiple_30x34_0: 1230089178681297565
+      Example_Multiple_30x34_1: 6220720690257239512
+      Example_Multiple_30x34_2: 3650777926244225920
+      Example_Multiple_30x34_3: -1925358059418854312
+      Example_Multiple_30x34_4: 5607046469618664554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

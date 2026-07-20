@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,12 +125,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Secondary_Idle_30x34_0
+      name: Example_Multiple_30x34_0
       rect:
         serializedVersion: 2
         x: 7
         y: 0
-        width: 21
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,19 +140,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31265714a8aefd0f0800000000000000
-      internalID: -1089894705275772397
+      spriteID: d9ac9593797221110800000000000000
+      internalID: 1230089178681297565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Idle_30x34_1
+      name: Example_Multiple_30x34_1
       rect:
         serializedVersion: 2
         x: 37
         y: 0
-        width: 21
+        width: 23
         height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -162,19 +162,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ac9c29823de06910800000000000000
-      internalID: 1828722250017971362
+      spriteID: 8dd94bd4280745650800000000000000
+      internalID: 6220720690257239512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Idle_30x34_2
+      name: Example_Multiple_30x34_2
       rect:
         serializedVersion: 2
         x: 67
         y: 0
-        width: 21
+        width: 23
         height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -184,19 +184,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5f8fb04fa0132450800000000000000
-      internalID: 6062707868262436699
+      spriteID: 083df976e2b2aa230800000000000000
+      internalID: 3650777926244225920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Idle_30x34_3
+      name: Example_Multiple_30x34_3
       rect:
         serializedVersion: 2
         x: 97
         y: 0
-        width: 21
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -206,19 +206,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9bf19eb4b793f9670800000000000000
-      internalID: 8547613819489820601
+      spriteID: 85c57e2cb01c745e0800000000000000
+      internalID: -1925358059418854312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Secondary_Idle_30x34_4
+      name: Example_Multiple_30x34_4
       rect:
         serializedVersion: 2
         x: 127
         y: 0
-        width: 21
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -228,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 105175e97214cc0d0800000000000000
-      internalID: -3401271980155529983
+      spriteID: a648ab48e0b30dd40800000000000000
+      internalID: 5607046469618664554
       vertices: []
       indices: 
       edges: []
@@ -248,11 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Secondary_Idle_30x34_0: -1089894705275772397
-      Secondary_Idle_30x34_1: 1828722250017971362
-      Secondary_Idle_30x34_2: 6062707868262436699
-      Secondary_Idle_30x34_3: 8547613819489820601
-      Secondary_Idle_30x34_4: -3401271980155529983
+      Example_Multiple_30x34_0: 1230089178681297565
+      Example_Multiple_30x34_1: 6220720690257239512
+      Example_Multiple_30x34_2: 3650777926244225920
+      Example_Multiple_30x34_3: -1925358059418854312
+      Example_Multiple_30x34_4: 5607046469618664554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
