@@ -134,111 +134,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Example_Multiple_30x34_0
+      name: Player_Run_30x34_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 23
-        height: 32
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d9ac9593797221110800000000000000
-      internalID: 1230089178681297565
+      spriteID: ef0f7ac4a3318924fb30f7e13274fc40
+      internalID: -1743716140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_1
+      name: Player_Run_30x34_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 30
         y: 0
-        width: 23
-        height: 31
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8dd94bd4280745650800000000000000
-      internalID: 6220720690257239512
+      spriteID: 39192da38c64fbd4686c8eef7c5efac3
+      internalID: -1007009034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_2
+      name: Player_Run_30x34_2
       rect:
         serializedVersion: 2
-        x: 67
+        x: 60
         y: 0
-        width: 23
-        height: 31
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 083df976e2b2aa230800000000000000
-      internalID: 3650777926244225920
+      spriteID: 439f2d3f81b53734a8996b28da6837a5
+      internalID: 1733816291
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_3
+      name: Player_Run_30x34_3
       rect:
         serializedVersion: 2
-        x: 97
+        x: 90
         y: 0
-        width: 23
-        height: 32
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 85c57e2cb01c745e0800000000000000
-      internalID: -1925358059418854312
+      spriteID: 7164ec84cb97f194894c4686789a9e5f
+      internalID: 1302641552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_4
+      name: Player_Run_30x34_4
       rect:
         serializedVersion: 2
-        x: 127
+        x: 120
         y: 0
-        width: 23
-        height: 32
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a648ab48e0b30dd40800000000000000
-      internalID: 5607046469618664554
+      spriteID: 5666ebb0e743b8847aaddc5865319e18
+      internalID: -1281112142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Run_30x34_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bee08064a0d1c94cbabd92f7ff3a861
+      internalID: -1823173928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Run_30x34_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e5d582ebe85a84dae1d4cc8971e8a5
+      internalID: -572662001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Run_30x34_7
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff854eaff9f073428622aaa7329aa6b
+      internalID: -213736818
       vertices: []
       indices: 
       edges: []
@@ -247,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d09061ff1b04a684ca2dc84f8ff880cd
     internalID: 0
     vertices: []
     indices: 
@@ -255,13 +321,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":30.0,"y":34.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Example_Multiple_30x34_0: 1230089178681297565
-      Example_Multiple_30x34_1: 6220720690257239512
-      Example_Multiple_30x34_2: 3650777926244225920
-      Example_Multiple_30x34_3: -1925358059418854312
-      Example_Multiple_30x34_4: 5607046469618664554
+      Player_Run_30x34_0: -1743716140
+      Player_Run_30x34_1: -1007009034
+      Player_Run_30x34_2: 1733816291
+      Player_Run_30x34_3: 1302641552
+      Player_Run_30x34_4: -1281112142
+      Player_Run_30x34_5: -1823173928
+      Player_Run_30x34_6: -572662001
+      Player_Run_30x34_7: -213736818
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -125,111 +125,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Example_Multiple_30x34_0
+      name: Player_Idle_30x34_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 23
-        height: 32
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d9ac9593797221110800000000000000
-      internalID: 1230089178681297565
+      spriteID: 22428681d767bde48a71059ef378fdd1
+      internalID: -1364295896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_1
+      name: Player_Idle_30x34_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 30
         y: 0
-        width: 23
-        height: 31
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8dd94bd4280745650800000000000000
-      internalID: 6220720690257239512
+      spriteID: fe3e7fedd452f4142907a7adf5ed47fd
+      internalID: -2071589909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_2
+      name: Player_Idle_30x34_2
       rect:
         serializedVersion: 2
-        x: 67
+        x: 60
         y: 0
-        width: 23
-        height: 31
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 083df976e2b2aa230800000000000000
-      internalID: 3650777926244225920
+      spriteID: 1c48f00947f00ab4790696c874f277ba
+      internalID: 1971613709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_3
+      name: Player_Idle_30x34_3
       rect:
         serializedVersion: 2
-        x: 97
+        x: 90
         y: 0
-        width: 23
-        height: 32
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 85c57e2cb01c745e0800000000000000
-      internalID: -1925358059418854312
+      spriteID: 0c4b5732846bb664c944845559ce765f
+      internalID: 122382449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_4
+      name: Player_Idle_30x34_4
       rect:
         serializedVersion: 2
-        x: 127
+        x: 120
         y: 0
-        width: 23
-        height: 32
+        width: 30
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a648ab48e0b30dd40800000000000000
-      internalID: 5607046469618664554
+      spriteID: a9bc1d0d718a0d548ad039fc416b8a0c
+      internalID: 750515329
       vertices: []
       indices: 
       edges: []
@@ -238,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d36f641b16e2f324b8400fbc3a83fb34
     internalID: 0
     vertices: []
     indices: 
@@ -246,13 +246,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":30.0,"y":34.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Example_Multiple_30x34_0: 1230089178681297565
-      Example_Multiple_30x34_1: 6220720690257239512
-      Example_Multiple_30x34_2: 3650777926244225920
-      Example_Multiple_30x34_3: -1925358059418854312
-      Example_Multiple_30x34_4: 5607046469618664554
+      Player_Idle_30x34_0: -1364295896
+      Player_Idle_30x34_1: -2071589909
+      Player_Idle_30x34_2: 1971613709
+      Player_Idle_30x34_3: 122382449
+      Player_Idle_30x34_4: 750515329
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

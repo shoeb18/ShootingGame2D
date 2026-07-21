@@ -10,7 +10,8 @@ public class PlayerInputs : MonoBehaviour
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
 
-    private float horizontalInput;
+    [HideInInspector]
+    public float horizontalInput;
 
     private void OnEnable()
     {
@@ -53,6 +54,5 @@ public class PlayerInputs : MonoBehaviour
     void Update()
     {
         horizontalInput = moveAction.action.ReadValue<float>();
-        // Debug.Log("Horizontal Input: " + horizontalInput);
     }
 }
