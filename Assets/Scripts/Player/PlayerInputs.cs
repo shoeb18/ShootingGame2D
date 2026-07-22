@@ -8,7 +8,6 @@ public class PlayerInputs : MonoBehaviour
     private InputActionMap uiMap;
 
     public InputActionReference moveAction;
-    public InputActionReference jumpAction;
 
     [HideInInspector]
     public float horizontalInput;
@@ -19,31 +18,11 @@ public class PlayerInputs : MonoBehaviour
         uiMap = playerInput.actions.FindActionMap("UI");
 
         playerMap.Enable();
-        jumpAction.action.performed += TryToJump;
-        jumpAction.action.canceled += StopJump;
     }
 
     private void OnDisable()
     {
-        jumpAction.action.performed -= TryToJump;
-        jumpAction.action.canceled -= StopJump;
         playerMap.Disable();
-    }
-
-    private void TryToJump(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("Jump action performed");
-        }
-    }
-    
-    private void StopJump(InputAction.CallbackContext context)
-    {
-        if (context.canceled)
-        {
-            Debug.Log("Jump action canceled");
-        }
     }
 
     void Start()

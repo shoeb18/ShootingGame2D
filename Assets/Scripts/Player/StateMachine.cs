@@ -6,6 +6,7 @@ public class StateMachine
 
     public void ChangeState(PlayerStates.State newState)
     {
+        // leave the current state
         foreach (BaseAbility ability in abilities)
         {
             if (ability.abilityState == currentState)
@@ -15,6 +16,7 @@ public class StateMachine
             }
         }
 
+        // enter the new state
         foreach (BaseAbility ability in abilities)
         {
             if (ability.abilityState == newState)

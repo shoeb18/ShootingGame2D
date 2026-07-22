@@ -3,19 +3,23 @@ using UnityEngine;
 public class MoveAbility : BaseAbility
 {
     [SerializeField] private float moveSpeed = 5f;
-    private string moveAnimationName = "Run";
+    private string moveAnimParameterName = "Run";
     private int moveAnimHash;
     public override void Initialization()
     {
         base.Initialization();
-        moveAnimHash = Animator.StringToHash(moveAnimationName);
+        moveAnimHash = Animator.StringToHash(moveAnimParameterName);
     }
 
     override public void UpdateAbility()
     {
-        if (linkedPlayerInputs.horizontalInput == 0)
+        if (linkedPhysicsControl.isGrounded && linkedPlayerInputs.horizontalInput == 0)
         {
             linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+        }
+        if (!linkedPhysicsControl.isGrounded)
+        {
+            linkedStateMachine.ChangeState(PlayerStates.State.Jump);
         }
     }
 

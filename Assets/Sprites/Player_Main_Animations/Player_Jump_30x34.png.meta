@@ -116,45 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Example_Multiple_30x34_0
+      name: Player_Jump_30x34_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 23
-        height: 32
+        width: 30
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d9ac9593797221110800000000000000
-      internalID: 1230089178681297565
+      spriteID: 2918ab4b772109b498026e55e53afc3b
+      internalID: -1399640594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Example_Multiple_30x34_1
+      name: Player_Jump_30x34_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 30
         y: 0
-        width: 23
-        height: 31
+        width: 30
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8dd94bd4280745650800000000000000
-      internalID: 6220720690257239512
+      spriteID: f54354bd394a62e4088570fb99329435
+      internalID: 947476697
       vertices: []
       indices: 
       edges: []
@@ -171,13 +171,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":30.0,"y":34.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Example_Multiple_30x34_0: 1230089178681297565
-      Example_Multiple_30x34_1: 6220720690257239512
-      Example_Multiple_30x34_2: 3650777926244225920
-      Example_Multiple_30x34_3: -1925358059418854312
-      Example_Multiple_30x34_4: 5607046469618664554
+      Player_Jump_30x34_0: -1399640594
+      Player_Jump_30x34_1: 947476697
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

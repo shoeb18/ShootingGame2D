@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class IdleAbility : BaseAbility
 {
-    private string idleAnimationName = "Idle";
+    private string idleAnimParameterName = "Idle";
     private int idleAnimHash;
     override public void Initialization()
     {
         base.Initialization();
-        idleAnimHash = Animator.StringToHash(idleAnimationName);
+        idleAnimHash = Animator.StringToHash(idleAnimParameterName);
         // add more things..
     }
 
