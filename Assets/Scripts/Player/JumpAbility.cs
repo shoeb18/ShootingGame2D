@@ -82,7 +82,7 @@ public class JumpAbility : BaseAbility
     {
         if (context.canceled)
         {
-            Debug.Log("Jump action canceled");
+            // Debug.Log("Jump action canceled");
         }
     }
 
