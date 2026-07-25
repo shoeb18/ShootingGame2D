@@ -46,6 +46,14 @@ public class JumpAbility : BaseAbility
         {
             linkedStateMachine.ChangeState(PlayerStates.State.Idle);
         }
+
+        if (!linkedPhysicsControl.isGrounded && linkedPhysicsControl.isTouchingWall)
+        {
+            if (linkedPhysicsControl.rb.linearVelocityY < 0)
+            {
+                linkedStateMachine.ChangeState(PlayerStates.State.WallSlide);
+            }
+        }
     }
 
     override public void UpdateAnimator()
