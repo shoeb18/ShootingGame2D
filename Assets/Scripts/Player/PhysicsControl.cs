@@ -14,6 +14,8 @@ public class PhysicsControl : MonoBehaviour
     public bool isGrounded;
     private RaycastHit2D groundHit;
 
+    private float gravityValue;
+
     [Header("Wall Check")]
     [SerializeField] float wallRaycastDistance = 0.5f;
     [SerializeField] Transform wallCheckUpper;
@@ -25,6 +27,26 @@ public class PhysicsControl : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
+        gravityValue = rb.gravityScale;
+    }
+
+    public void DisableGravity()
+    {
+        rb.gravityScale = 0f;
+    }
+
+    public void EnableGravity()
+    {
+        rb.gravityScale = gravityValue;
+    }
+
+    public void ResetVelocity()
+    {
+        rb.linearVelocity = Vector2.zero;
     }
 
     private bool IsGrounded()
