@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 52318359}
   - component: {fileID: 52318361}
   - component: {fileID: 52318363}
+  - component: {fileID: 52318364}
   - component: {fileID: 52318362}
   - component: {fileID: 52318360}
   - component: {fileID: 52318355}
@@ -220,6 +221,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 480201290}
+  - {fileID: 297559534}
+  - {fileID: 2040516318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &52318354
@@ -256,7 +259,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.3}
+  m_Offset: {x: 0, y: -0.14}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -266,7 +269,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 1.5}
+  m_Size: {x: 0.6, y: 1.85}
   m_EdgeRadius: 0
 --- !u!50 &52318355
 Rigidbody2D:
@@ -418,11 +421,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsControl
   rb: {fileID: 52318355}
   groundCheck: {fileID: 480201290}
-  groundCheckRadius: 0.2
+  groundRaycastDistance: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  wallRaycastDistance: 0.2
+  wallCheckUpper: {fileID: 297559534}
+  wallCheckLower: {fileID: 2040516318}
+  isTouchingWall: 0
 --- !u!114 &52318363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +448,23 @@ MonoBehaviour:
   jumpForce: 10
   airSpeed: 5
   minimumAirTime: 0.2
+--- !u!114 &52318364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52318351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8b199ccbc34b249b408b6193824e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallJumpAbility
+  abilityState: 4
+  isPermitted: 1
+  jumpInputAction: {fileID: -2449169643632598516, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
+  wallJumpForce: {x: 8, y: 10}
+  wallJumpMaxTime: 0.4
 --- !u!1 &169103430
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +543,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 30, y: 18}
   m_EdgeRadius: 0
+--- !u!1 &297559533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297559534}
+  m_Layer: 7
+  m_Name: WallCheckUpper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &297559534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297559533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 52318353}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &480201289
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 480201289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.055, z: 0}
+  m_LocalPosition: {x: 0, y: -1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10510,6 +10565,37 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!1 &2040516317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040516318}
+  m_Layer: 7
+  m_Name: WallCheckLower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2040516318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040516317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 52318353}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

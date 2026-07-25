@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
             ability.UpdateAnimator();
         }
 
-        FlipPlayer(playerInputs.horizontalInput);
+        FlipPlayer();
     }
 
     private void FixedUpdate()
@@ -65,17 +65,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FlipPlayer(float horizontalInput)
+    public void FlipPlayer()
     {
-        if (horizontalInput > 0.01f && !facingRight)
+        if (facingRight==true && playerInputs.horizontalInput < 0)
         {
-            facingRight = true;
-            spriteRenderer.flipX = false;
+            transform.Rotate(0f, 180f, 0f);
+            facingRight = !facingRight;
         }
-        else if (horizontalInput < -0.01f && facingRight)
+        else if (facingRight==false && playerInputs.horizontalInput > 0)
         {
-            facingRight = false;
-            spriteRenderer.flipX = true;
+            transform.Rotate(0f, 180f, 0f);
+            facingRight = !facingRight;
         }
+    }
+
+    public void ForceFlipPlayer()
+    {
+        transform.Rotate(0f, 180f, 0f);
+        facingRight = !facingRight;
     }
 }
