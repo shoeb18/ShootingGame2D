@@ -41,6 +41,9 @@ public class WallJumpAbility : BaseAbility
             // flip the player and apply the wall jump force
             player.ForceFlipPlayer();
 
+            // temp code for lower gravity for wall jump
+            linkedPhysicsControl.rb.gravityScale = linkedPhysicsControl.GetGravity() / 2f;
+
             if (player.facingRight)
             {
                 linkedPhysicsControl.rb.linearVelocity = new Vector2(wallJumpForce.x, wallJumpForce.y);
@@ -50,6 +53,11 @@ public class WallJumpAbility : BaseAbility
                 linkedPhysicsControl.rb.linearVelocity = new Vector2(-wallJumpForce.x, wallJumpForce.y);
             }
         }
+    }
+
+    public override void ExitAbility()
+    {
+        linkedPhysicsControl.rb.gravityScale = linkedPhysicsControl.GetGravity();
     }
 
     private bool EvaluateWallJumpConditions()
@@ -68,6 +76,19 @@ public class WallJumpAbility : BaseAbility
     {
         wallJumpTimer -= Time.deltaTime;
         wallJumpMinimumTime -= Time.deltaTime;
+
+        if (wallJumpMinimumTime < 0 && linkedPhysicsControl.isGrounded)
+        {
+            if (linkedPlayerInputs.horizontalInput != 0)
+            {
+                linkedStateMachine.ChangeState(PlayerStates.State.Run);
+            }
+            else
+            {
+                linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+            }
+            return;
+        }
 
         if (wallJumpTimer <= 0f)
         {

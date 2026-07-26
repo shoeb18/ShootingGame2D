@@ -11,6 +11,10 @@ public class MoveAbility : BaseAbility
         moveAnimHash = Animator.StringToHash(moveAnimParameterName);
     }
 
+    public override void EnterAbility()
+    {
+        player.FlipPlayer();
+    }
     override public void UpdateAbility()
     {
         if (linkedPhysicsControl.isGrounded && linkedPlayerInputs.horizontalInput == 0)
