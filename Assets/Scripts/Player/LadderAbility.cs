@@ -33,7 +33,7 @@ public class LadderAbility : BaseAbility
 
     private void TryToClimb(InputAction.CallbackContext context)
     {
-        if (!isPermitted)
+        if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
         {
             return;
         }

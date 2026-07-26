@@ -81,7 +81,7 @@ public class JumpAbility : BaseAbility
     {
         if (context.performed)
         {
-            if (!isPermitted)
+            if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
                 return;
 
             if (linkedStateMachine.currentState == PlayerStates.State.LadderClimb)

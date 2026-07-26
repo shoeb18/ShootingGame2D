@@ -11,6 +11,8 @@ public class PlayerStates
         Dash,
         Crouch,
         LadderClimb,
-        Ignore
+        Ignore,
+        KnockBack,
+        Death
     }
 }

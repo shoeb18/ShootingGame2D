@@ -27,7 +27,7 @@ public class WallJumpAbility : BaseAbility
 
     private void TryWallJump(InputAction.CallbackContext context)
     {
-        if (!isPermitted)
+        if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
         {
             return;
         }
@@ -42,7 +42,7 @@ public class WallJumpAbility : BaseAbility
             player.ForceFlipPlayer();
 
             // temp code for lower gravity for wall jump
-            linkedPhysicsControl.rb.gravityScale = linkedPhysicsControl.GetGravity() / 2f;
+            linkedPhysicsControl.rb.gravityScale = linkedPhysicsControl.GetGravity() / 2.5f;
 
             if (player.facingRight)
             {

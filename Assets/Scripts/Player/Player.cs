@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private PhysicsControl physicsControl;
     private SpriteRenderer spriteRenderer;
     public bool facingRight = true;
+    public PlayerStats playerStats;
 
     public StateMachine GetStateMachine()
     {
