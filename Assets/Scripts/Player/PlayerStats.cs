@@ -4,12 +4,14 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private Player player;
+    [SerializeField] private HealthBarControl healthBarControl;
     private float currentHealth;
 
 
     void Start()
     {
         currentHealth = maxHealth;
+        healthBarControl.SetSliderValue(currentHealth, maxHealth);
     }
 
     public float GetCurrentHealth()
@@ -20,6 +22,7 @@ public class PlayerStats : MonoBehaviour
     public void DamagePlayer(float damageValue)
     {
         currentHealth -= damageValue;
+        healthBarControl.SetSliderValue(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
