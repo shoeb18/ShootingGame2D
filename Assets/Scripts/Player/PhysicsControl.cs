@@ -36,6 +36,10 @@ public class PhysicsControl : MonoBehaviour
     private RaycastHit2D ceilingHitRight;
     private RaycastHit2D ceilingHitLeft;
 
+    [Header("Coyote Time")]
+    [SerializeField] private float coyoteSetTime;
+    public float coyoteTimer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,6 +48,7 @@ public class PhysicsControl : MonoBehaviour
     void Start()
     {
         gravityValue = rb.gravityScale;
+        coyoteTimer = coyoteSetTime;
     }
 
     private void OnDrawGizmos()
@@ -90,6 +95,18 @@ public class PhysicsControl : MonoBehaviour
         ceilingHitRight = Physics2D.Raycast(ceilingCheckRight.position, Vector2.up, ceilingRaycastDistance, groundLayer);
         ceilingHitLeft = Physics2D.Raycast(ceilingCheckLeft.position, Vector2.up, ceilingRaycastDistance, groundLayer);
         return ceilingHitRight.collider != null || ceilingHitLeft.collider != null;
+    }
+
+    void Update()
+    {
+        if (!isGrounded)
+        {
+            coyoteTimer -= Time.deltaTime;
+        }
+        else
+        {
+            coyoteTimer = coyoteSetTime;
+        }
     }
 
     private void FixedUpdate()

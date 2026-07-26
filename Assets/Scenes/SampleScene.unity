@@ -445,6 +445,8 @@ MonoBehaviour:
   ceilingCheckRight: {fileID: 1630045675}
   ceilingCheckLeft: {fileID: 986283211}
   ceilingDetected: 0
+  coyoteSetTime: 0.1
+  coyoteTimer: 0
 --- !u!114 &52318363
 MonoBehaviour:
   m_ObjectHideFlags: 0
