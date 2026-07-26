@@ -8,9 +8,10 @@ public class PlayerInputs : MonoBehaviour
     private InputActionMap uiMap;
 
     public InputActionReference moveAction;
+    public InputActionReference verticalAction;
 
-    [HideInInspector]
-    public float horizontalInput;
+    [HideInInspector] public float horizontalInput;
+    [HideInInspector] public float verticalInput;
 
     private void OnEnable()
     {
@@ -33,5 +34,6 @@ public class PlayerInputs : MonoBehaviour
     void Update()
     {
         horizontalInput = moveAction.action.ReadValue<float>();
+        verticalInput = verticalAction.action.ReadValue<float>();
     }
 }
