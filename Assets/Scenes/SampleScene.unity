@@ -494,7 +494,7 @@ MonoBehaviour:
   abilityState: 6
   isPermitted: 1
   dashActionRef: {fileID: -2289879803666397342, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
-  dashForce: 25
+  dashForce: 18
   maxDashDuration: 0.3
 --- !u!114 &52318367
 MonoBehaviour:
@@ -585,17 +585,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 52318351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21857ba62a57f3d4d9696b900e0dfacf, type: 3}
+  m_Script: {fileID: 11500000, guid: 41fc6384e82eb3843820d1b4ec6eaa10, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VariableJumpAbility
+  m_EditorClassIdentifier: Assembly-CSharp::MultipleJumpAbility
   abilityState: 2
   isPermitted: 1
   jumpAction: {fileID: -2449169643632598516, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
-  jumpForce: 15
+  maxNumOfJumps: 2
+  jumpForce: 12
   airSpeed: 5
   minimumAirTime: 0.2
   setMaxJumpTime: 0.2
-  gravityDivider: 1.85
+  gravityDivider: 1.8
 --- !u!1 &169103430
 GameObject:
   m_ObjectHideFlags: 0

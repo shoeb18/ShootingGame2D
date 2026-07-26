@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class VariableJumpAbility : BaseAbility
+public class MultipleJumpAbility : BaseAbility
 {
     public InputActionReference jumpAction;
+
+    [SerializeField] private int maxNumOfJumps = 2;
+    private int numberOfJumps;
+    private bool canActivateMultiJumps;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float airSpeed = 2f;
     [SerializeField] private float minimumAirTime = 0.2f;
@@ -25,6 +29,7 @@ public class VariableJumpAbility : BaseAbility
     {
         base.Initialization();
         startMinimumAirTime = minimumAirTime; // Store the initial value of minimumAirTime
+        numberOfJumps = maxNumOfJumps;
         jumpParamHash = Animator.StringToHash(jumpAnimParameterName);
         ySpeedParamHash = Animator.StringToHash(ySpeedParameterName);
     }
@@ -119,8 +124,12 @@ public class VariableJumpAbility : BaseAbility
 
                 jumping = true;
                 jumpTimer = setMaxJumpTime;
+                numberOfJumps = maxNumOfJumps;
+                canActivateMultiJumps = true;
+                numberOfJumps -= 1;
                 return;
             }
+
             if (linkedPhysicsControl.coyoteTimer > 0)
             {
                 linkedStateMachine.ChangeState(PlayerStates.State.Jump);
@@ -130,8 +139,29 @@ public class VariableJumpAbility : BaseAbility
 
                 jumping = true;
                 jumpTimer = setMaxJumpTime;
+                numberOfJumps = maxNumOfJumps;
+                canActivateMultiJumps = true;
+                numberOfJumps -= 1;
+                return;
             }
 
+            if (numberOfJumps > 0 && canActivateMultiJumps)
+            {
+                linkedPhysicsControl.EnableGravity();
+                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
+                minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
+                linkedPhysicsControl.coyoteTimer = -1;
+
+                jumping = true;
+                jumpTimer = setMaxJumpTime;
+
+                numberOfJumps -= 1;
+                return;
+            }
+            else
+            {
+                canActivateMultiJumps = false;
+            }
             /*
             if (linkedPhysicsControl.isGrounded)
             {
@@ -143,9 +173,15 @@ public class VariableJumpAbility : BaseAbility
         }
     }
 
+    public void SetMaxJumpCount(int maxJump)
+    {
+        maxNumOfJumps = maxJump;
+    }
+
     public override void ExitAbility()
     {
         linkedPhysicsControl.EnableGravity();
+        canActivateMultiJumps = false;
     }
     private void StopJump(InputAction.CallbackContext context)
     {

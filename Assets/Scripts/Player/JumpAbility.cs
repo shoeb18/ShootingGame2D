@@ -44,7 +44,14 @@ public class JumpAbility : BaseAbility
 
         if (linkedPhysicsControl.isGrounded && minimumAirTime <= 0)
         {
-            linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+            if (linkedPlayerInputs.horizontalInput != 0)
+            {
+                linkedStateMachine.ChangeState(PlayerStates.State.Run);
+            }
+            else
+            {
+                linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+            }
         }
 
         if (!linkedPhysicsControl.isGrounded && linkedPhysicsControl.isTouchingWall)
