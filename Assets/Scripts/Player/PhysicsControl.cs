@@ -51,6 +51,11 @@ public class PhysicsControl : MonoBehaviour
         coyoteTimer = coyoteSetTime;
     }
 
+    public float GetGravity()
+    {
+        return gravityValue;
+    }
+
     private void OnDrawGizmos()
     {
         Debug.DrawRay(ceilingCheckRight.position, new Vector3(0, ceilingRaycastDistance, 0));

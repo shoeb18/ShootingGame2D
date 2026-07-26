@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 52318357}
   - component: {fileID: 52318359}
   - component: {fileID: 52318361}
-  - component: {fileID: 52318363}
+  - component: {fileID: 52318370}
   - component: {fileID: 52318364}
   - component: {fileID: 52318365}
   - component: {fileID: 52318366}
@@ -293,7 +293,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 8
   m_Material: {fileID: 6200000, guid: f47c67d16ffc8bf49813876914afd432, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -447,24 +447,6 @@ MonoBehaviour:
   ceilingDetected: 0
   coyoteSetTime: 0.1
   coyoteTimer: 0
---- !u!114 &52318363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52318351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f553cdf87fde8be4a8387b9722806c7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JumpAbility
-  abilityState: 2
-  isPermitted: 1
-  jumpAction: {fileID: -2449169643632598516, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
-  jumpForce: 10
-  airSpeed: 5
-  minimumAirTime: 0.2
 --- !u!114 &52318364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +494,7 @@ MonoBehaviour:
   abilityState: 6
   isPermitted: 1
   dashActionRef: {fileID: -2289879803666397342, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
-  dashForce: 15
+  dashForce: 25
   maxDashDuration: 0.3
 --- !u!114 &52318367
 MonoBehaviour:
@@ -594,6 +576,26 @@ MonoBehaviour:
   isPermitted: 1
   crouchActionRef: {fileID: -5965530671049669575, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
   crouchSpeed: 5
+--- !u!114 &52318370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52318351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21857ba62a57f3d4d9696b900e0dfacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VariableJumpAbility
+  abilityState: 2
+  isPermitted: 1
+  jumpAction: {fileID: -2449169643632598516, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
+  jumpForce: 15
+  airSpeed: 5
+  minimumAirTime: 0.2
+  setMaxJumpTime: 0.2
+  gravityDivider: 1.85
 --- !u!1 &169103430
 GameObject:
   m_ObjectHideFlags: 0
