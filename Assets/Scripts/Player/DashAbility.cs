@@ -40,7 +40,7 @@ public class DashAbility : BaseAbility
             return;
         }
 
-        if (linkedStateMachine.currentState == PlayerStates.State.Dash || linkedPhysicsControl.isTouchingWall)
+        if (linkedStateMachine.currentState == PlayerStates.State.Dash || linkedPhysicsControl.isTouchingWall || linkedStateMachine.currentState == PlayerStates.State.Crouch)
         {
             return;
         }

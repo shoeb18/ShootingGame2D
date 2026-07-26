@@ -24,6 +24,18 @@ public class PhysicsControl : MonoBehaviour
     private RaycastHit2D wallHitUpper;
     private RaycastHit2D wallHitLower;
 
+    [Header("Colliders")]
+    [SerializeField] private Collider2D standCollider;
+    [SerializeField] private Collider2D crouchCollider;
+
+    [Header("Ceiling Check")]
+    [SerializeField] float ceilingRaycastDistance = 0.5f;
+    [SerializeField] Transform ceilingCheckRight;
+    [SerializeField] Transform ceilingCheckLeft;
+    public bool ceilingDetected;
+    private RaycastHit2D ceilingHitRight;
+    private RaycastHit2D ceilingHitLeft;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,6 +44,12 @@ public class PhysicsControl : MonoBehaviour
     void Start()
     {
         gravityValue = rb.gravityScale;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawRay(ceilingCheckRight.position, new Vector3(0, ceilingRaycastDistance, 0));
+        Debug.DrawRay(ceilingCheckLeft.position, new Vector3(0, ceilingRaycastDistance, 0));
     }
 
     public void DisableGravity()
@@ -67,9 +85,28 @@ public class PhysicsControl : MonoBehaviour
         return wallHitUpper.collider != null || wallHitLower.collider != null;
     }
 
+    private bool IsCeilingDetected()
+    {
+        ceilingHitRight = Physics2D.Raycast(ceilingCheckRight.position, Vector2.up, ceilingRaycastDistance, groundLayer);
+        ceilingHitLeft = Physics2D.Raycast(ceilingCheckLeft.position, Vector2.up, ceilingRaycastDistance, groundLayer);
+        return ceilingHitRight.collider != null || ceilingHitLeft.collider != null;
+    }
+
     private void FixedUpdate()
     {
         isGrounded = IsGrounded();
         isTouchingWall = IsTouchingWall();
+        ceilingDetected = IsCeilingDetected();
+    }
+
+    public void StandCollider()
+    {
+        standCollider.enabled = true;
+        crouchCollider.enabled = false;
+    }
+    public void CrouchCollider()
+    {
+        standCollider.enabled = false;
+        crouchCollider.enabled = true;
     }
 }
