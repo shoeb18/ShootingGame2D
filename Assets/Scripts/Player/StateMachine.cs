@@ -1,50 +1,53 @@
-public class StateMachine
+namespace Player
 {
-    public PlayerStates.State currentState;
-    public PlayerStates.State previousState;
-    public BaseAbility[] abilities;
-
-    public void ChangeState(PlayerStates.State newState)
+    public class StateMachine
     {
-        foreach (BaseAbility ability in abilities)
+        public PlayerStates.State currentState;
+        public PlayerStates.State previousState;
+        public BaseAbility[] abilities;
+
+        public void ChangeState(PlayerStates.State newState)
         {
-            if (ability.abilityState == currentState)
+            foreach (BaseAbility ability in abilities)
             {
-                if (!ability.isPermitted)
+                if (ability.abilityState == currentState)
                 {
-                    return;
+                    if (!ability.isPermitted)
+                    {
+                        return;
+                    }
+                }
+            }
+
+            // leave the current state
+            foreach (BaseAbility ability in abilities)
+            {
+                if (ability.abilityState == currentState)
+                {
+                    ability.ExitAbility();
+                    previousState = currentState;
+                }
+            }
+
+            // enter the new state
+            foreach (BaseAbility ability in abilities)
+            {
+                if (ability.abilityState == newState)
+                {
+                    if (ability.isPermitted)
+                    {
+                        currentState = newState;
+                        ability.EnterAbility();
+                    }
+                    break;
                 }
             }
         }
 
-        // leave the current state
-        foreach (BaseAbility ability in abilities)
+        public void ForceChangeState(PlayerStates.State newState)
         {
-            if (ability.abilityState == currentState)
-            {
-                ability.ExitAbility();
-                previousState = currentState;
-            }
+            previousState = currentState;
+            currentState = newState;
         }
-
-        // enter the new state
-        foreach (BaseAbility ability in abilities)
-        {
-            if (ability.abilityState == newState)
-            {
-                if (ability.isPermitted)
-                {
-                    currentState = newState;
-                    ability.EnterAbility();
-                }
-                break;
-            }
-        }
-    }
-
-    public void ForceChangeState(PlayerStates.State newState)
-    {
-        previousState = currentState;
-        currentState = newState;
     }
 }

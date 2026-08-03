@@ -1,90 +1,92 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 
-public class DashAbility : BaseAbility
+namespace Player
 {
-    public InputActionReference dashActionRef;
-    [SerializeField] private float dashForce = 10f;
-    [SerializeField] private float maxDashDuration;
-    private float dashTimer;
-    private string DashParameterName = "Dash";
-    private int DashParamHash;
-
-    public override void Initialization()
+    public class DashAbility : BaseAbility
     {
-        base.Initialization();
-        DashParamHash = Animator.StringToHash(DashParameterName);
-    }
+        public InputActionReference dashActionRef;
+        [SerializeField] private float dashForce = 10f;
+        [SerializeField] private float maxDashDuration;
+        private float dashTimer;
+        private string DashParameterName = "Dash";
+        private int DashParamHash;
 
-    void OnEnable()
-    {
-        dashActionRef.action.performed += TryDash;
-    }
-
-    void OnDisable()
-    {
-        dashActionRef.action.performed -= TryDash;
-    }
-
-    public override void ExitAbility()
-    {
-        linkedPhysicsControl.EnableGravity();
-        linkedPhysicsControl.ResetVelocity();
-    }
-
-    private void TryDash(InputAction.CallbackContext value)
-    {
-        if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
+        public override void Initialization()
         {
-            return;
+            base.Initialization();
+            DashParamHash = Animator.StringToHash(DashParameterName);
         }
 
-        if (linkedStateMachine.currentState == PlayerStates.State.Dash || linkedPhysicsControl.isTouchingWall || linkedStateMachine.currentState == PlayerStates.State.Crouch)
+        void OnEnable()
         {
-            return;
+            dashActionRef.action.performed += TryDash;
         }
 
-        linkedStateMachine.ChangeState(PlayerStates.State.Dash);
-        linkedPhysicsControl.DisableGravity();
-        linkedPhysicsControl.ResetVelocity();
-
-        if (player.facingRight)
+        void OnDisable()
         {
-            linkedPhysicsControl.rb.linearVelocityX = dashForce;
-        }
-        else
-        {
-            linkedPhysicsControl.rb.linearVelocityX = -dashForce;
+            dashActionRef.action.performed -= TryDash;
         }
 
-        dashTimer = maxDashDuration;
-    }
-
-    public override void UpdateAbility()
-    {
-        dashTimer -= Time.deltaTime;
-
-        if (linkedPhysicsControl.isTouchingWall)
+        public override void ExitAbility()
         {
-            dashTimer = -1;
+            linkedPhysicsControl.EnableGravity();
+            linkedPhysicsControl.ResetVelocity();
         }
 
-        if (dashTimer <= 0)
+        private void TryDash(InputAction.CallbackContext value)
         {
-            if (linkedPhysicsControl.isGrounded)
+            if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+                return;
+            }
+
+            if (linkedStateMachine.currentState == PlayerStates.State.Dash || linkedPhysicsControl.isTouchingWall || linkedStateMachine.currentState == PlayerStates.State.Crouch)
+            {
+                return;
+            }
+
+            linkedStateMachine.ChangeState(PlayerStates.State.Dash);
+            linkedPhysicsControl.DisableGravity();
+            linkedPhysicsControl.ResetVelocity();
+
+            if (player.facingRight)
+            {
+                linkedPhysicsControl.rb.linearVelocityX = dashForce;
             }
             else
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+                linkedPhysicsControl.rb.linearVelocityX = -dashForce;
+            }
+
+            dashTimer = maxDashDuration;
+        }
+
+        public override void UpdateAbility()
+        {
+            dashTimer -= Time.deltaTime;
+
+            if (linkedPhysicsControl.isTouchingWall)
+            {
+                dashTimer = -1;
+            }
+
+            if (dashTimer <= 0)
+            {
+                if (linkedPhysicsControl.isGrounded)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+                }
+                else
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+                }
             }
         }
-    }
 
-    public override void UpdateAnimator()
-    {
-        linkedAnimator.SetBool(DashParamHash, linkedStateMachine.currentState == PlayerStates.State.Dash);
+        public override void UpdateAnimator()
+        {
+            linkedAnimator.SetBool(DashParamHash, linkedStateMachine.currentState == PlayerStates.State.Dash);
+        }
     }
 }

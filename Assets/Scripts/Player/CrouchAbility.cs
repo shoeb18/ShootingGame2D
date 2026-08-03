@@ -1,101 +1,87 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CrouchAbility : BaseAbility
+namespace Player
 {
-    public InputActionReference crouchActionRef;
-    [SerializeField] private float crouchSpeed = 2f;
-    private string crouchAnimParameterName = "Crouch";
-    private int crouchAnimHash;
+    public class CrouchAbility : BaseAbility
+    {
+        public InputActionReference crouchActionRef;
+        [SerializeField] private float crouchSpeed = 2f;
+        private string crouchAnimParameterName = "Crouch";
+        private int crouchAnimHash;
 
-    private string xSpeedParameterName = "xSpeed";
-    private int xSpeedHash;
-    private bool wantToStop;
+        private string xSpeedParameterName = "xSpeed";
+        private int xSpeedHash;
+        private bool wantToStop;
 
-    public override void Initialization()
-    {
-        base.Initialization();
-        crouchAnimHash = Animator.StringToHash(crouchAnimParameterName);
-        xSpeedHash = Animator.StringToHash(xSpeedParameterName);
-    }
-
-    void OnEnable()
-    {
-        crouchActionRef.action.performed += TryToCrouch;
-        crouchActionRef.action.canceled += StopCrouch;
-    }
-    void OnDisable()
-    {
-        crouchActionRef.action.performed -= TryToCrouch;
-        crouchActionRef.action.canceled -= StopCrouch;
-    }
-    public override void EnterAbility()
-    {
-        linkedPhysicsControl.CrouchCollider();
-    }
-    private void TryToCrouch(InputAction.CallbackContext context)
-    {
-        if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
+        public override void Initialization()
         {
-            return;
-        }
-        if (linkedPhysicsControl.isGrounded == false || linkedStateMachine.currentState == PlayerStates.State.Dash
-        || linkedStateMachine.currentState == PlayerStates.State.LadderClimb)
-        {
-            return;
-        }
-        wantToStop = false;
-        linkedStateMachine.ChangeState(PlayerStates.State.Crouch);
-    }
-
-    public override void ExitAbility()
-    {
-        linkedPhysicsControl.StandCollider();
-        wantToStop = false;
-    }
-
-    public override void FixedUpdateAbility()
-    {
-        if (linkedPhysicsControl.isGrounded)
-        {
-            linkedPhysicsControl.rb.linearVelocity = new Vector2(linkedPlayerInputs.horizontalInput * crouchSpeed, linkedPhysicsControl.rb.linearVelocityY);
-        }
-    }
-
-    private void StopCrouch(InputAction.CallbackContext context)
-    {
-        if (!isPermitted)
-        {
-            return;
+            base.Initialization();
+            crouchAnimHash = Animator.StringToHash(crouchAnimParameterName);
+            xSpeedHash = Animator.StringToHash(xSpeedParameterName);
         }
 
-        if (linkedStateMachine.currentState != PlayerStates.State.Crouch)
+        void OnEnable()
         {
-            return;
+            crouchActionRef.action.performed += TryToCrouch;
+            crouchActionRef.action.canceled += StopCrouch;
+        }
+        void OnDisable()
+        {
+            crouchActionRef.action.performed -= TryToCrouch;
+            crouchActionRef.action.canceled -= StopCrouch;
+        }
+        public override void EnterAbility()
+        {
+            linkedPhysicsControl.CrouchCollider();
+        }
+        private void TryToCrouch(InputAction.CallbackContext context)
+        {
+            if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
+            {
+                return;
+            }
+            if (linkedPhysicsControl.isGrounded == false || linkedStateMachine.currentState == PlayerStates.State.Dash
+                                                         || linkedStateMachine.currentState == PlayerStates.State.LadderClimb)
+            {
+                return;
+            }
+            wantToStop = false;
+            linkedStateMachine.ChangeState(PlayerStates.State.Crouch);
         }
 
-        if (linkedPhysicsControl.ceilingDetected)
+        public override void ExitAbility()
         {
-            wantToStop = true;
-            return;
+            linkedPhysicsControl.StandCollider();
+            wantToStop = false;
         }
 
-        if (linkedPlayerInputs.horizontalInput == 0)
+        public override void FixedUpdateAbility()
         {
-            linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+            if (linkedPhysicsControl.isGrounded)
+            {
+                linkedPhysicsControl.rb.linearVelocity = new Vector2(linkedPlayerInputs.horizontalInput * crouchSpeed, linkedPhysicsControl.rb.linearVelocityY);
+            }
         }
-        else if (linkedPlayerInputs.horizontalInput != 0)
-        {
-            linkedStateMachine.ChangeState(PlayerStates.State.Run);
-        }
-    }
 
-    public override void UpdateAbility()
-    {
-        player.FlipPlayer();
-
-        if (wantToStop && linkedPhysicsControl.ceilingDetected == false)
+        private void StopCrouch(InputAction.CallbackContext context)
         {
+            if (!isPermitted)
+            {
+                return;
+            }
+
+            if (linkedStateMachine.currentState != PlayerStates.State.Crouch)
+            {
+                return;
+            }
+
+            if (linkedPhysicsControl.ceilingDetected)
+            {
+                wantToStop = true;
+                return;
+            }
+
             if (linkedPlayerInputs.horizontalInput == 0)
             {
                 linkedStateMachine.ChangeState(PlayerStates.State.Idle);
@@ -106,15 +92,32 @@ public class CrouchAbility : BaseAbility
             }
         }
 
-        if (linkedPhysicsControl.isGrounded == false)
+        public override void UpdateAbility()
         {
-            linkedStateMachine.ChangeState(PlayerStates.State.Jump);
-        }
-    }
+            player.FlipPlayer();
 
-    public override void UpdateAnimator()
-    {
-        linkedAnimator.SetBool(crouchAnimHash, linkedStateMachine.currentState == PlayerStates.State.Crouch);
-        linkedAnimator.SetFloat(xSpeedHash, Mathf.Abs(linkedPhysicsControl.rb.linearVelocityX));
+            if (wantToStop && linkedPhysicsControl.ceilingDetected == false)
+            {
+                if (linkedPlayerInputs.horizontalInput == 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+                }
+                else if (linkedPlayerInputs.horizontalInput != 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Run);
+                }
+            }
+
+            if (linkedPhysicsControl.isGrounded == false)
+            {
+                linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+            }
+        }
+
+        public override void UpdateAnimator()
+        {
+            linkedAnimator.SetBool(crouchAnimHash, linkedStateMachine.currentState == PlayerStates.State.Crouch);
+            linkedAnimator.SetFloat(xSpeedHash, Mathf.Abs(linkedPhysicsControl.rb.linearVelocityX));
+        }
     }
 }

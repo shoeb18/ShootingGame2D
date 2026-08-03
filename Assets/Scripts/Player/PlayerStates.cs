@@ -1,18 +1,21 @@
-public class PlayerStates
+namespace Player
 {
-    public enum State
+    public class PlayerStates
     {
-        Idle,
-        Run,
-        Jump,
-        DoubleJump,
-        WallJump,
-        WallSlide,
-        Dash,
-        Crouch,
-        LadderClimb,
-        Ignore,
-        KnockBack,
-        Death
+        public enum State
+        {
+            Idle,
+            Run,
+            Jump,
+            DoubleJump,
+            WallJump,
+            WallSlide,
+            Dash,
+            Crouch,
+            LadderClimb,
+            Ignore,
+            KnockBack,
+            Death
+        }
     }
 }

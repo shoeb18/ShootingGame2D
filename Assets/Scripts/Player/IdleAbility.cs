@@ -1,32 +1,35 @@
 using UnityEngine;
 
-public class IdleAbility : BaseAbility
+namespace Player
 {
-    private string idleAnimParameterName = "Idle";
-    private int idleAnimHash;
-    override public void Initialization()
+    public class IdleAbility : BaseAbility
     {
-        base.Initialization();
-        idleAnimHash = Animator.StringToHash(idleAnimParameterName);
-        // add more things..
-    }
-
-    override public void EnterAbility()
-    {
-        linkedPhysicsControl.rb.linearVelocityX = 0f;
-    }
-
-    public override void UpdateAbility()
-    {
-        if (linkedPlayerInputs.horizontalInput != 0)
+        private string idleAnimParameterName = "Idle";
+        private int idleAnimHash;
+        override public void Initialization()
         {
-            linkedStateMachine.ChangeState(PlayerStates.State.Run);
+            base.Initialization();
+            idleAnimHash = Animator.StringToHash(idleAnimParameterName);
+            // add more things..
         }
-    }
 
-    override public void UpdateAnimator()
-    {
-        linkedAnimator.SetBool(idleAnimHash, linkedStateMachine.currentState == PlayerStates.State.Idle);
-    }
+        override public void EnterAbility()
+        {
+            linkedPhysicsControl.rb.linearVelocityX = 0f;
+        }
 
+        public override void UpdateAbility()
+        {
+            if (linkedPlayerInputs.horizontalInput != 0)
+            {
+                linkedStateMachine.ChangeState(PlayerStates.State.Run);
+            }
+        }
+
+        override public void UpdateAnimator()
+        {
+            linkedAnimator.SetBool(idleAnimHash, linkedStateMachine.currentState == PlayerStates.State.Idle);
+        }
+
+    }
 }

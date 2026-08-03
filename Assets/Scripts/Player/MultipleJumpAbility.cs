@@ -1,168 +1,170 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MultipleJumpAbility : BaseAbility
+namespace Player
 {
-    public InputActionReference jumpAction;
-
-    [SerializeField] private int maxNumOfJumps = 2;
-    private int numberOfJumps;
-    private bool canActivateMultiJumps;
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float airSpeed = 2f;
-    [SerializeField] private float minimumAirTime = 0.2f;
-
-    [SerializeField] private float setMaxJumpTime;
-    private float jumpTimer;
-    private bool jumping;
-
-    [SerializeField] private float gravityDivider;
-
-    private float startMinimumAirTime;
-
-    private string jumpAnimParameterName = "Jump";
-    private string ySpeedParameterName = "ySpeed";
-    private int jumpParamHash;
-    private int ySpeedParamHash;
-
-    public override void Initialization()
+    public class MultipleJumpAbility : BaseAbility
     {
-        base.Initialization();
-        startMinimumAirTime = minimumAirTime; // Store the initial value of minimumAirTime
-        numberOfJumps = maxNumOfJumps;
-        jumpParamHash = Animator.StringToHash(jumpAnimParameterName);
-        ySpeedParamHash = Animator.StringToHash(ySpeedParameterName);
-    }
+        public InputActionReference jumpAction;
 
-    private void OnEnable()
-    {
-        jumpAction.action.performed += TryToJump;
-        jumpAction.action.canceled += StopJump;
-    }
+        [SerializeField] private int maxNumOfJumps = 2;
+        private int numberOfJumps;
+        private bool canActivateMultiJumps;
+        [SerializeField] private float jumpForce = 5f;
+        [SerializeField] private float airSpeed = 2f;
+        [SerializeField] private float minimumAirTime = 0.2f;
 
-    private void OnDisable()
-    {
-        jumpAction.action.performed -= TryToJump;
-        jumpAction.action.canceled -= StopJump;
-    }
+        [SerializeField] private float setMaxJumpTime;
+        private float jumpTimer;
+        private bool jumping;
 
-    override public void UpdateAbility()
-    {
-        if (minimumAirTime > 0)
+        [SerializeField] private float gravityDivider;
+
+        private float startMinimumAirTime;
+
+        private string jumpAnimParameterName = "Jump";
+        private string ySpeedParameterName = "ySpeed";
+        private int jumpParamHash;
+        private int ySpeedParamHash;
+
+        public override void Initialization()
         {
-            minimumAirTime -= Time.deltaTime;
+            base.Initialization();
+            startMinimumAirTime = minimumAirTime; // Store the initial value of minimumAirTime
+            numberOfJumps = maxNumOfJumps;
+            jumpParamHash = Animator.StringToHash(jumpAnimParameterName);
+            ySpeedParamHash = Animator.StringToHash(ySpeedParameterName);
         }
 
-        if (jumping)
+        private void OnEnable()
         {
-            jumpTimer -= Time.deltaTime;
-            if (jumpTimer <= 0)
-            {
-                jumping = false;
-            }
+            jumpAction.action.performed += TryToJump;
+            jumpAction.action.canceled += StopJump;
         }
 
-        if (linkedPhysicsControl.isGrounded && minimumAirTime <= 0)
+        private void OnDisable()
         {
-            if (linkedPlayerInputs.horizontalInput != 0)
-            {
-                linkedStateMachine.ChangeState(PlayerStates.State.Run);
-            }
-            else
-            {
-                linkedStateMachine.ChangeState(PlayerStates.State.Idle);
-            }
+            jumpAction.action.performed -= TryToJump;
+            jumpAction.action.canceled -= StopJump;
         }
 
-        if (!linkedPhysicsControl.isGrounded && linkedPhysicsControl.isTouchingWall)
+        override public void UpdateAbility()
         {
-            if (linkedPhysicsControl.rb.linearVelocityY < 0)
+            if (minimumAirTime > 0)
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.WallSlide);
+                minimumAirTime -= Time.deltaTime;
             }
-        }
 
-    }
-
-    override public void UpdateAnimator()
-    {
-        linkedAnimator.SetBool(jumpParamHash, linkedStateMachine.currentState == PlayerStates.State.Jump || linkedStateMachine.currentState == PlayerStates.State.WallJump);
-        linkedAnimator.SetFloat(ySpeedParamHash, linkedPhysicsControl.rb.linearVelocity.y);
-    }
-
-    override public void FixedUpdateAbility()
-    {
-        if (!linkedPhysicsControl.isGrounded)
-        {
             if (jumping)
             {
-                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
+                jumpTimer -= Time.deltaTime;
+                if (jumpTimer <= 0)
+                {
+                    jumping = false;
+                }
             }
-            else
+
+            if (linkedPhysicsControl.isGrounded && minimumAirTime <= 0)
             {
-                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, Mathf.Clamp(linkedPhysicsControl.rb.linearVelocityY, -10, jumpForce));
+                if (linkedPlayerInputs.horizontalInput != 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Run);
+                }
+                else
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+                }
+            }
+
+            if (!linkedPhysicsControl.isGrounded && linkedPhysicsControl.isTouchingWall)
+            {
+                if (linkedPhysicsControl.rb.linearVelocityY < 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.WallSlide);
+                }
+            }
+
+        }
+
+        override public void UpdateAnimator()
+        {
+            linkedAnimator.SetBool(jumpParamHash, linkedStateMachine.currentState == PlayerStates.State.Jump || linkedStateMachine.currentState == PlayerStates.State.WallJump);
+            linkedAnimator.SetFloat(ySpeedParamHash, linkedPhysicsControl.rb.linearVelocity.y);
+        }
+
+        override public void FixedUpdateAbility()
+        {
+            if (!linkedPhysicsControl.isGrounded)
+            {
+                if (jumping)
+                {
+                    linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
+                }
+                else
+                {
+                    linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, Mathf.Clamp(linkedPhysicsControl.rb.linearVelocityY, -10, jumpForce));
+                }
+            }
+            if (linkedPhysicsControl.rb.linearVelocityY < 0)
+            {
+                linkedPhysicsControl.rb.gravityScale = linkedPhysicsControl.GetGravity() / gravityDivider;
             }
         }
-        if (linkedPhysicsControl.rb.linearVelocityY < 0)
+
+        private void TryToJump(InputAction.CallbackContext context)
         {
-            linkedPhysicsControl.rb.gravityScale = linkedPhysicsControl.GetGravity() / gravityDivider;
-        }
-    }
-
-    private void TryToJump(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
-                return;
-
-            if (linkedStateMachine.currentState == PlayerStates.State.LadderClimb)
+            if (context.performed)
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.Jump);
-                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, 0);
-                minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
+                if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
+                    return;
 
-                jumping = true;
-                jumpTimer = setMaxJumpTime;
-                numberOfJumps = maxNumOfJumps;
-                canActivateMultiJumps = true;
-                numberOfJumps -= 1;
-                return;
-            }
+                if (linkedStateMachine.currentState == PlayerStates.State.LadderClimb)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+                    linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, 0);
+                    minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
 
-            if (linkedPhysicsControl.coyoteTimer > 0)
-            {
-                linkedStateMachine.ChangeState(PlayerStates.State.Jump);
-                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
-                minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
-                linkedPhysicsControl.coyoteTimer = -1;
+                    jumping = true;
+                    jumpTimer = setMaxJumpTime;
+                    numberOfJumps = maxNumOfJumps;
+                    canActivateMultiJumps = true;
+                    numberOfJumps -= 1;
+                    return;
+                }
 
-                jumping = true;
-                jumpTimer = setMaxJumpTime;
-                numberOfJumps = maxNumOfJumps;
-                canActivateMultiJumps = true;
-                numberOfJumps -= 1;
-                return;
-            }
+                if (linkedPhysicsControl.coyoteTimer > 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+                    linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
+                    minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
+                    linkedPhysicsControl.coyoteTimer = -1;
 
-            if (numberOfJumps > 0 && canActivateMultiJumps)
-            {
-                linkedPhysicsControl.EnableGravity();
-                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
-                minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
-                linkedPhysicsControl.coyoteTimer = -1;
+                    jumping = true;
+                    jumpTimer = setMaxJumpTime;
+                    numberOfJumps = maxNumOfJumps;
+                    canActivateMultiJumps = true;
+                    numberOfJumps -= 1;
+                    return;
+                }
 
-                jumping = true;
-                jumpTimer = setMaxJumpTime;
+                if (numberOfJumps > 0 && canActivateMultiJumps)
+                {
+                    linkedPhysicsControl.EnableGravity();
+                    linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
+                    minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
+                    linkedPhysicsControl.coyoteTimer = -1;
 
-                numberOfJumps -= 1;
-                return;
-            }
-            else
-            {
-                canActivateMultiJumps = false;
-            }
-            /*
+                    jumping = true;
+                    jumpTimer = setMaxJumpTime;
+
+                    numberOfJumps -= 1;
+                    return;
+                }
+                else
+                {
+                    canActivateMultiJumps = false;
+                }
+                /*
             if (linkedPhysicsControl.isGrounded)
             {
                 linkedStateMachine.ChangeState(PlayerStates.State.Jump);
@@ -170,22 +172,23 @@ public class MultipleJumpAbility : BaseAbility
                 minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
             }
             */
+            }
         }
-    }
 
-    public void SetMaxJumpCount(int maxJump)
-    {
-        maxNumOfJumps = maxJump;
-    }
+        public void SetMaxJumpCount(int maxJump)
+        {
+            maxNumOfJumps = maxJump;
+        }
 
-    public override void ExitAbility()
-    {
-        linkedPhysicsControl.EnableGravity();
-        canActivateMultiJumps = false;
-    }
-    private void StopJump(InputAction.CallbackContext context)
-    {
-        jumping = false;
-    }
+        public override void ExitAbility()
+        {
+            linkedPhysicsControl.EnableGravity();
+            canActivateMultiJumps = false;
+        }
+        private void StopJump(InputAction.CallbackContext context)
+        {
+            jumping = false;
+        }
 
+    }
 }

@@ -1,105 +1,107 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class JumpAbility : BaseAbility
+namespace Player
 {
-    public InputActionReference jumpAction;
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float airSpeed = 2f;
-    [SerializeField] private float minimumAirTime = 0.2f;
-
-    private float startMinimumAirTime;
-
-    private string jumpAnimParameterName = "Jump";
-    private string ySpeedParameterName = "ySpeed";
-    private int jumpParamHash;
-    private int ySpeedParamHash;
-
-    public override void Initialization()
+    public class JumpAbility : BaseAbility
     {
-        base.Initialization();
-        startMinimumAirTime = minimumAirTime; // Store the initial value of minimumAirTime
-        jumpParamHash = Animator.StringToHash(jumpAnimParameterName);
-        ySpeedParamHash = Animator.StringToHash(ySpeedParameterName);
-    }
+        public InputActionReference jumpAction;
+        [SerializeField] private float jumpForce = 5f;
+        [SerializeField] private float airSpeed = 2f;
+        [SerializeField] private float minimumAirTime = 0.2f;
 
-    private void OnEnable()
-    {
-        jumpAction.action.performed += TryToJump;
-        jumpAction.action.canceled += StopJump;
-    }
+        private float startMinimumAirTime;
 
-    private void OnDisable()
-    {
-        jumpAction.action.performed -= TryToJump;
-        jumpAction.action.canceled -= StopJump;
-    }
+        private string jumpAnimParameterName = "Jump";
+        private string ySpeedParameterName = "ySpeed";
+        private int jumpParamHash;
+        private int ySpeedParamHash;
 
-    override public void UpdateAbility()
-    {
-        if (minimumAirTime > 0)
+        public override void Initialization()
         {
-            minimumAirTime -= Time.deltaTime;
+            base.Initialization();
+            startMinimumAirTime = minimumAirTime; // Store the initial value of minimumAirTime
+            jumpParamHash = Animator.StringToHash(jumpAnimParameterName);
+            ySpeedParamHash = Animator.StringToHash(ySpeedParameterName);
         }
 
-        if (linkedPhysicsControl.isGrounded && minimumAirTime <= 0)
+        private void OnEnable()
         {
-            if (linkedPlayerInputs.horizontalInput != 0)
+            jumpAction.action.performed += TryToJump;
+            jumpAction.action.canceled += StopJump;
+        }
+
+        private void OnDisable()
+        {
+            jumpAction.action.performed -= TryToJump;
+            jumpAction.action.canceled -= StopJump;
+        }
+
+        override public void UpdateAbility()
+        {
+            if (minimumAirTime > 0)
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.Run);
+                minimumAirTime -= Time.deltaTime;
             }
-            else
+
+            if (linkedPhysicsControl.isGrounded && minimumAirTime <= 0)
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+                if (linkedPlayerInputs.horizontalInput != 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Run);
+                }
+                else
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Idle);
+                }
+            }
+
+            if (!linkedPhysicsControl.isGrounded && linkedPhysicsControl.isTouchingWall)
+            {
+                if (linkedPhysicsControl.rb.linearVelocityY < 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.WallSlide);
+                }
             }
         }
 
-        if (!linkedPhysicsControl.isGrounded && linkedPhysicsControl.isTouchingWall)
+        override public void UpdateAnimator()
         {
-            if (linkedPhysicsControl.rb.linearVelocityY < 0)
+            linkedAnimator.SetBool(jumpParamHash, linkedStateMachine.currentState == PlayerStates.State.Jump || linkedStateMachine.currentState == PlayerStates.State.WallJump);
+            linkedAnimator.SetFloat(ySpeedParamHash, linkedPhysicsControl.rb.linearVelocity.y);
+        }
+
+        override public void FixedUpdateAbility()
+        {
+            if (!linkedPhysicsControl.isGrounded)
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.WallSlide);
+                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, linkedPhysicsControl.rb.linearVelocity.y);
             }
         }
-    }
 
-    override public void UpdateAnimator()
-    {
-        linkedAnimator.SetBool(jumpParamHash, linkedStateMachine.currentState == PlayerStates.State.Jump || linkedStateMachine.currentState == PlayerStates.State.WallJump);
-        linkedAnimator.SetFloat(ySpeedParamHash, linkedPhysicsControl.rb.linearVelocity.y);
-    }
-
-    override public void FixedUpdateAbility()
-    {
-        if (!linkedPhysicsControl.isGrounded)
+        private void TryToJump(InputAction.CallbackContext context)
         {
-            linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, linkedPhysicsControl.rb.linearVelocity.y);
-        }
-    }
-
-    private void TryToJump(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
-                return;
-
-            if (linkedStateMachine.currentState == PlayerStates.State.LadderClimb)
+            if (context.performed)
             {
-                linkedStateMachine.ChangeState(PlayerStates.State.Jump);
-                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, 0);
-                minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
-                return;
-            }
-            if (linkedPhysicsControl.coyoteTimer > 0)
-            {
-                linkedStateMachine.ChangeState(PlayerStates.State.Jump);
-                linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
-                minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
-                linkedPhysicsControl.coyoteTimer = -1;
-            }
+                if (!isPermitted || linkedStateMachine.currentState == PlayerStates.State.KnockBack)
+                    return;
 
-            /*
+                if (linkedStateMachine.currentState == PlayerStates.State.LadderClimb)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+                    linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, 0);
+                    minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
+                    return;
+                }
+                if (linkedPhysicsControl.coyoteTimer > 0)
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+                    linkedPhysicsControl.rb.linearVelocity = new Vector2(airSpeed * linkedPlayerInputs.horizontalInput, jumpForce);
+                    minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
+                    linkedPhysicsControl.coyoteTimer = -1;
+                }
+
+                /*
             if (linkedPhysicsControl.isGrounded)
             {
                 linkedStateMachine.ChangeState(PlayerStates.State.Jump);
@@ -107,15 +109,16 @@ public class JumpAbility : BaseAbility
                 minimumAirTime = startMinimumAirTime; // Reset minimumAirTime when jumping
             }
             */
+            }
         }
-    }
 
-    private void StopJump(InputAction.CallbackContext context)
-    {
-        if (context.canceled)
+        private void StopJump(InputAction.CallbackContext context)
         {
-            // Debug.Log("Jump action canceled");
+            if (context.canceled)
+            {
+                // Debug.Log("Jump action canceled");
+            }
         }
-    }
 
+    }
 }

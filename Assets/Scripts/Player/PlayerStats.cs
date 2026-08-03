@@ -1,32 +1,35 @@
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private float maxHealth;
-    [SerializeField] private Player player;
-    [SerializeField] private HealthBarControl healthBarControl;
-    private float currentHealth;
-
-
-    void Start()
+    public class PlayerStats : MonoBehaviour
     {
-        currentHealth = maxHealth;
-        healthBarControl.SetSliderValue(currentHealth, maxHealth);
-    }
+        [SerializeField] private float maxHealth;
+        [SerializeField] private Player player;
+        [SerializeField] private HealthBarControl healthBarControl;
+        private float currentHealth;
 
-    public float GetCurrentHealth()
-    {
-        return currentHealth;
-    }
 
-    public void DamagePlayer(float damageValue)
-    {
-        currentHealth -= damageValue;
-        healthBarControl.SetSliderValue(currentHealth, maxHealth);
-
-        if (currentHealth <= 0)
+        void Start()
         {
-            print("Player dead!");
+            currentHealth = maxHealth;
+            healthBarControl.SetSliderValue(currentHealth, maxHealth);
+        }
+
+        public float GetCurrentHealth()
+        {
+            return currentHealth;
+        }
+
+        public void DamagePlayer(float damageValue)
+        {
+            currentHealth -= damageValue;
+            healthBarControl.SetSliderValue(currentHealth, maxHealth);
+
+            if (currentHealth <= 0)
+            {
+                print("Player dead!");
+            }
         }
     }
 }
