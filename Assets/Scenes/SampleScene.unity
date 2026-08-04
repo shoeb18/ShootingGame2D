@@ -1258,7 +1258,7 @@ GameObject:
   m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2096,7 +2096,7 @@ GameObject:
   m_Layer: 7
   m_Name: CeilingCheckLeft
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -8435,7 +8435,7 @@ GameObject:
   m_Layer: 7
   m_Name: CeilingCheckRight
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12798,6 +12798,10 @@ MonoBehaviour:
   maxHealth: 10
   player: {fileID: 52318358}
   healthBarControl: {fileID: 1556690122}
+  flashDuration: 0.3
+  flashIntensity: 1
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashMaterial: {fileID: 2100000, guid: 299c2377c1821c5408e68ad400cbe22e, type: 2}
 --- !u!1 &2040516317
 GameObject:
   m_ObjectHideFlags: 0

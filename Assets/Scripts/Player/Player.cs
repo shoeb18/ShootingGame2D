@@ -38,7 +38,6 @@ namespace Player
             anim = GetComponent<Animator>();
             physicsControl = GetComponent<PhysicsControl>();
             playerInputs = GetComponent<PlayerInputs>();
-            GetComponent<SpriteRenderer>();
         }
 
         private void Update()
