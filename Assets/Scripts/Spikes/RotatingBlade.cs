@@ -1,13 +1,21 @@
+using System;
 using Player;
 using UnityEngine;
 
-public class Spikes : MonoBehaviour
+public class RotatingBlade : MonoBehaviour
 {
-    [SerializeField] private float spikeDamage;
+    [SerializeField] private float rotateSpeed;
+    [SerializeField] private float damageAmount;
     [SerializeField] private float knockBackDuration;
     [SerializeField] private Vector2 knockBackForce;
+    
+    
+    private void Update()
+    {
+        transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+    }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         KnockBackAbility knockBackAbility = collision.GetComponentInParent<KnockBackAbility>();
         knockBackAbility.StartKnockBack(knockBackDuration, knockBackForce, transform);
@@ -16,7 +24,7 @@ public class Spikes : MonoBehaviour
 
         if (playerStats != null)
         {
-            playerStats.DamagePlayer(spikeDamage);
+            playerStats.DamagePlayer(damageAmount);
         }
     }
 }
