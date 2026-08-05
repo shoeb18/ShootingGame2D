@@ -14,6 +14,9 @@ namespace Player
 
         public void StartKnockBack(float duration, Vector2 force, Transform enemyObject)
         {
+            if (player.playerStats.GetCanTakeDamage() == false)
+                return;
+            
             if (currentCoroutine == null)
             {
                 currentCoroutine = StartCoroutine(KnockBack(duration, force, enemyObject));

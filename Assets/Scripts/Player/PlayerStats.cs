@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ namespace Player
         [SerializeField] private Material flashMaterial;
         private Material defaultMaterial;
         private SpriteRenderer spriteRenderer;
-        private bool canTakeDamage;
+        private bool canTakeDamage = true;
 
         private void Awake()
         {
@@ -41,13 +40,15 @@ namespace Player
 
         public void DamagePlayer(float damageValue)
         {
+            if (canTakeDamage == false) return;
             currentHealth -= damageValue;
             healthBarControl.SetSliderValue(currentHealth, maxHealth);
             StartCoroutine(Flash());
 
             if (currentHealth <= 0)
             {
-                print("Player dead!");
+                // player dead
+                print("Game Over");
             }
         }
 
@@ -57,9 +58,17 @@ namespace Player
             flashMaterial.color = flashColor;
             flashMaterial.SetColor("_FlashColor", flashColor);
             flashMaterial.SetFloat("_FlashAmount", flashDuration);
+            canTakeDamage = false;
             
             yield return new WaitForSeconds(flashDuration);
             spriteRenderer.material = defaultMaterial;
+            if (currentHealth > 0)
+                canTakeDamage = true;
+        }
+
+        public bool GetCanTakeDamage()
+        {
+            return canTakeDamage;
         }
     }
 }
