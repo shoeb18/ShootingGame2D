@@ -37,7 +37,7 @@ public class SwingBlade : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         KnockBackAbility knockBackAbility = collision.GetComponentInParent<KnockBackAbility>();
-        knockBackAbility.StartKnockBack(knockBackDuration, knockBackForce, transform);
+        knockBackAbility.StartSwingKnockBack(knockBackDuration, knockBackForce, pushDirection);
 
         PlayerStats playerStats = collision.GetComponent<PlayerStats>();
 

@@ -74,6 +74,10 @@ namespace Player
                         linkedStateMachine.ChangeState(PlayerStates.State.Idle);
                     }
                 }
+                else
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Jump);
+                }
             }
             else
             {
@@ -103,6 +107,10 @@ namespace Player
                     {
                         linkedStateMachine.ChangeState(PlayerStates.State.Idle);
                     }
+                }
+                else
+                {
+                    linkedStateMachine.ChangeState(PlayerStates.State.Jump);
                 }
             }
             else

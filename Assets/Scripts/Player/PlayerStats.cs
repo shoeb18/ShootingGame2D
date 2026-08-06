@@ -79,8 +79,8 @@ namespace Player
 
             if (currentHealth <= 0)
             {
-                // player dead
-                print("Game Over");
+                if (player.GetStateMachine().currentState != PlayerStates.State.KnockBack)
+                    player.GetStateMachine().ChangeState(PlayerStates.State.Death);
             }
         }
 

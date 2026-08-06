@@ -28,9 +28,9 @@ namespace Player
             playerMap.Disable();
         }
 
-        void Start()
+        public void DisablePlayerInputs()
         {
-        
+            playerMap.Disable();
         }
 
         void Update()
