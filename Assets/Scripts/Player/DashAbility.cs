@@ -28,10 +28,16 @@ namespace Player
             dashActionRef.action.performed -= TryDash;
         }
 
+        public override void EnterAbility()
+        {
+            player.playerStats.DisableDamage();// enables I-frames for dash
+        }
+
         public override void ExitAbility()
         {
             linkedPhysicsControl.EnableGravity();
             linkedPhysicsControl.ResetVelocity();
+            player.playerStats.EnableDamage(); // disables I-frames for dash
         }
 
         private void TryDash(InputAction.CallbackContext value)

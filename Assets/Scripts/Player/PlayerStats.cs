@@ -19,6 +19,28 @@ namespace Player
         private Material defaultMaterial;
         private SpriteRenderer spriteRenderer;
         private bool canTakeDamage = true;
+        
+        [Header("StatesColliders")]
+        [SerializeField] private Collider2D standingCollider;
+        [SerializeField] private Collider2D crouchingCollider;
+        private Collider2D currentCollider;
+
+        public void EnableStandingCollider()
+        {
+            if (currentHealth <= 0) return;
+            currentCollider = standingCollider;
+            standingCollider.enabled = true;
+            crouchingCollider.enabled = false;
+        }
+
+        public void EnableCrouchingCollider()
+        {
+            if (currentHealth <= 0) return;
+            currentCollider = crouchingCollider;
+            crouchingCollider.enabled = true;
+            standingCollider.enabled = false;
+        }
+        
 
         private void Awake()
         {
@@ -36,6 +58,16 @@ namespace Player
         public float GetCurrentHealth()
         {
             return currentHealth;
+        }
+
+        public void EnableDamage()
+        {
+            canTakeDamage = true;
+        }
+
+        public void DisableDamage()
+        {
+            canTakeDamage = false;
         }
 
         public void DamagePlayer(float damageValue)

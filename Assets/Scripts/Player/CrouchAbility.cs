@@ -34,6 +34,7 @@ namespace Player
         public override void EnterAbility()
         {
             linkedPhysicsControl.CrouchCollider();
+            player.playerStats.EnableCrouchingCollider();
         }
         private void TryToCrouch(InputAction.CallbackContext context)
         {
@@ -54,6 +55,7 @@ namespace Player
         {
             linkedPhysicsControl.StandCollider();
             wantToStop = false;
+            player.playerStats.EnableStandingCollider();
         }
 
         public override void FixedUpdateAbility()
