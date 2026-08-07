@@ -22,6 +22,6 @@ public class DeathAbility : BaseAbility
 
     public void ResetGame()
     {
-        Debug.Log("Reset Game");
+        LevelManager.instance.RestartLevel();
     }
 }
