@@ -14,7 +14,7 @@ namespace Player
 
         public void StartKnockBack(float duration, Vector2 force, Transform enemyObject)
         {
-            if (player.playerStats.GetCanTakeDamage() == false)
+            if (playerCharacter.playerStats.GetCanTakeDamage() == false)
                 return;
             
             if (currentCoroutine == null)
@@ -31,7 +31,7 @@ namespace Player
 
         public void StartSwingKnockBack(float duration, Vector2 force, int direction)
         {
-            if (player.playerStats.GetCanTakeDamage() == false)
+            if (playerCharacter.playerStats.GetCanTakeDamage() == false)
                 return;
             
             if (currentCoroutine == null)
@@ -61,7 +61,7 @@ namespace Player
 
             yield return new WaitForSeconds(duration);
 
-            if (player.playerStats.GetCurrentHealth() > 0)
+            if (playerCharacter.playerStats.GetCurrentHealth() > 0)
             {
                 if (linkedPhysicsControl.isGrounded)
                 {
@@ -95,7 +95,7 @@ namespace Player
 
             yield return new WaitForSeconds(duration);
 
-            if (player.playerStats.GetCurrentHealth() > 0)
+            if (playerCharacter.playerStats.GetCurrentHealth() > 0)
             {
                 if (linkedPhysicsControl.isGrounded)
                 {

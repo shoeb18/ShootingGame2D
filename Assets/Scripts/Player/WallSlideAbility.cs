@@ -25,14 +25,14 @@ namespace Player
                 linkedStateMachine.ChangeState(PlayerStates.State.Idle);
                 return;
             }
-            if (player.facingRight && linkedPlayerInputs.horizontalInput < 0)
+            if (playerCharacter.facingRight && linkedPlayerInputs.horizontalInput < 0)
             {
                 linkedStateMachine.ChangeState(PlayerStates.State.Jump);
                 linkedPhysicsControl.isTouchingWall = false;
                 linkedAnimator.SetBool("WallSlide", false);
                 return;
             }
-            if (!player.facingRight && linkedPlayerInputs.horizontalInput > 0)
+            if (!playerCharacter.facingRight && linkedPlayerInputs.horizontalInput > 0)
             {
                 linkedStateMachine.ChangeState(PlayerStates.State.Jump);
                 linkedPhysicsControl.isTouchingWall = false;

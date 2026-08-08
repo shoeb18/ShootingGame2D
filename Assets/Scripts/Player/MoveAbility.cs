@@ -15,7 +15,7 @@ namespace Player
 
         public override void EnterAbility()
         {
-            player.FlipPlayer();
+            playerCharacter.FlipPlayer();
         }
         override public void UpdateAbility()
         {

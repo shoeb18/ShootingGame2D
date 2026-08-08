@@ -10796,7 +10796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8620653e0c2e3a24cb4712780e103dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  fadeDuration: 3
+  fadeDuration: 1
 --- !u!1001 &260882026690874089
 PrefabInstance:
   m_ObjectHideFlags: 0

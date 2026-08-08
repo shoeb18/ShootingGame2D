@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class Player : MonoBehaviour
+    public class PlayerCharacter : MonoBehaviour
     {
         private PlayerInputs playerInputs;
         private StateMachine stateMachine;

@@ -9,9 +9,9 @@ public class Gate : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player.Player player = other.GetComponent<Player.Player>();
-            player.GetPlayerInputs().DisablePlayerInputs();
-            player.GetPhysicsControl().ResetVelocity();
+            PlayerCharacter playerCharacter = other.GetComponent<PlayerCharacter>();
+            playerCharacter.GetPlayerInputs().DisablePlayerInputs();
+            playerCharacter.GetPhysicsControl().ResetVelocity();
             GetComponent<Collider2D>().enabled = false;
             
             LevelManager.instance.LoadNextLevel(levelToLoad);

@@ -4,7 +4,7 @@ namespace Player
 {
     public class BaseAbility : MonoBehaviour
     {
-        protected Player player;
+        protected PlayerCharacter playerCharacter;
         protected PlayerInputs linkedPlayerInputs;
         protected StateMachine linkedStateMachine;
         protected Animator linkedAnimator;
@@ -43,14 +43,14 @@ namespace Player
     
         public virtual void Initialization()
         {
-            player = GetComponent<Player>();
+            playerCharacter = GetComponent<PlayerCharacter>();
 
-            if (player != null)
+            if (playerCharacter != null)
             {
-                linkedPlayerInputs = player.GetPlayerInputs();
-                linkedStateMachine = player.GetStateMachine();
-                linkedAnimator = player.GetAnimator();
-                linkedPhysicsControl = player.GetPhysicsControl();
+                linkedPlayerInputs = playerCharacter.GetPlayerInputs();
+                linkedStateMachine = playerCharacter.GetStateMachine();
+                linkedAnimator = playerCharacter.GetAnimator();
+                linkedPhysicsControl = playerCharacter.GetPhysicsControl();
             }
         }
     }

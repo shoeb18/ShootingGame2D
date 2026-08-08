@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -7,7 +8,7 @@ namespace Player
     {
         [Header("Health")]
         [SerializeField] private float maxHealth;
-        [SerializeField] private Player player;
+        [FormerlySerializedAs("player")] [SerializeField] private PlayerCharacter playerCharacter;
         [SerializeField] private HealthBarControl healthBarControl;
         private float currentHealth;
 
@@ -79,8 +80,8 @@ namespace Player
 
             if (currentHealth <= 0)
             {
-                if (player.GetStateMachine().currentState != PlayerStates.State.KnockBack)
-                    player.GetStateMachine().ChangeState(PlayerStates.State.Death);
+                if (playerCharacter.GetStateMachine().currentState != PlayerStates.State.KnockBack)
+                    playerCharacter.GetStateMachine().ChangeState(PlayerStates.State.Death);
             }
         }
 

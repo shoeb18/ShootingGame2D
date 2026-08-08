@@ -41,12 +41,12 @@ namespace Player
                 wallJumpMinimumTime = 0.15f;
 
                 // flip the player and apply the wall jump force
-                player.ForceFlipPlayer();
+                playerCharacter.ForceFlipPlayer();
 
                 // temp code for lower gravity for wall jump
                 linkedPhysicsControl.rb.gravityScale = linkedPhysicsControl.GetGravity() / 2.5f;
 
-                if (player.facingRight)
+                if (playerCharacter.facingRight)
                 {
                     linkedPhysicsControl.rb.linearVelocity = new Vector2(wallJumpForce.x, wallJumpForce.y);
                 }
