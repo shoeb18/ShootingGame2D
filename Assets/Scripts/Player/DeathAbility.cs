@@ -1,5 +1,7 @@
 using Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.IO;
 
 public class DeathAbility : BaseAbility
 {
@@ -7,6 +9,8 @@ public class DeathAbility : BaseAbility
     {
         linkedPlayerInputs.DisablePlayerInputs();
         linkedPhysicsControl.ResetVelocity();
+
+        SpawnMode.spawnFromCheckpoint = true;
 
         if (linkedPhysicsControl.isGrounded)
         {
@@ -22,6 +26,16 @@ public class DeathAbility : BaseAbility
 
     public void ResetGame()
     {
-        LevelManager.instance.RestartLevel();
+        string loadPath = Path.Combine(Application.persistentDataPath, SaveLoadManager.instance.folderName, SaveLoadManager.instance.fileCheckpoint);
+        if (File.Exists(loadPath))
+        {
+            CheckpointData checkpointData = new CheckpointData();
+            SaveLoadManager.instance.LoadData(checkpointData, SaveLoadManager.instance.folderName, SaveLoadManager.instance.fileCheckpoint);
+            LevelManager.instance.LoadLevelString(checkpointData.sceneToLoad);
+        }
+        else
+        {
+            LevelManager.instance.RestartLevel();
+        }
     }
 }

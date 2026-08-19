@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(FadeToBlackInt(SceneManager.GetActiveScene().buildIndex));
     }
 
-    public void LoadNextLevel(string levelName)
+    public void LoadLevelString(string levelName)
     {
         StartCoroutine(FadeToBlackString(levelName));
     }

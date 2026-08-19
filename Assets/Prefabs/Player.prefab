@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 6288237828773890751}
   - component: {fileID: 3460034922367592515}
   - component: {fileID: 9217808907692767533}
+  - component: {fileID: 327870605771291691}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -603,6 +604,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6, y: 1.2}
   m_EdgeRadius: 0
+--- !u!114 &327870605771291691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210482633834911472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d84252700c63c4eac5f42901992537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActivateCheckpoint
+  checkpointInputAction: {fileID: 1570076076572434711, guid: ab5af8097adbec34eba524e8db636d71, type: 3}
+  checkpoint: {fileID: 0}
 --- !u!1 &5244343691332281696
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   maxHealth: 10
-  player: {fileID: 1673259090520587515}
+  playerCharacter: {fileID: 1673259090520587515}
   healthBarControl: {fileID: 0}
   flashDuration: 0.3
   flashIntensity: 1
