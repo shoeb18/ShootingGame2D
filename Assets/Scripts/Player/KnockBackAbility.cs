@@ -3,7 +3,13 @@ using UnityEngine;
 
 namespace Player
 {
-    public class KnockBackAbility : BaseAbility
+    /* KnockBackAbility: Applies knockback effects and transitions post-knockback.
+ - StartKnockBack()/StartSwingKnockBack(): start knockback coroutines if player can take damage.
+ - KnockBack()/SwingKnockBack(): coroutine applying force, waiting, then transitioning to appropriate state or Death.
+ - ExitAbility(): clear current coroutine reference.
+ - UpdateAnimator(): set animator bool for knockback state.
+*/
+public class KnockBackAbility : BaseAbility
     {
         private Coroutine currentCoroutine;
 

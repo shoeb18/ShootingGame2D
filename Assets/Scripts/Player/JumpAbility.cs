@@ -3,7 +3,16 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class JumpAbility : BaseAbility
+    /* JumpAbility: Single jump behavior and animator updates.
+ - Initialization(): cache animator hashes and minimum air time.
+ - OnEnable()/OnDisable(): subscribe/unsubscribe jump input.
+ - TryToJump(): handle jump input; supports coyote time and ladder-jump case, sets vertical velocity and minimum air time.
+ - StopJump(): hook for jump cancel (currently no variable jump logic here).
+ - UpdateAbility(): manage minimumAirTime and transitions to Run/Idle/WallSlide.
+ - FixedUpdateAbility(): apply horizontal control while airborne.
+ - UpdateAnimator(): update jump flag and vertical speed parameter.
+*/
+public class JumpAbility : BaseAbility
     {
         public InputActionReference jumpAction;
         [SerializeField] private float jumpForce = 5f;

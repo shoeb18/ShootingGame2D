@@ -1,6 +1,11 @@
 
 
 [System.Serializable]
+/* SaveDataBase: Serializable data containers used by SaveLoadManager.
+ - ExampleData: simple example with number and name.
+ - SpawnData: which spawn key to place the player and facing direction; default Start,true.
+ - CheckpointData: saved checkpoint info including scene, checkpoint key and facing; has defaults.
+*/
 public class ExampleData
 {
     public int number;

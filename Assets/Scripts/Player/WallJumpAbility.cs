@@ -3,7 +3,15 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class WallJumpAbility : BaseAbility
+    /* WallJumpAbility: Handles wall-jump input, applies force, flips player and short timers.
+ - OnEnable()/OnDisable(): subscribe/unsubscribe jump input.
+ - Initialization(): set up wall jump timers.
+ - TryWallJump(): validate conditions, apply wall jump force, flip player and reduce gravity temporarily.
+ - ExitAbility(): restore gravity.
+ - EvaluateWallJumpConditions(): helper to check whether wall jump is allowed.
+ - UpdateAbility(): count down timers and transition to WallSlide/Jump/Idle appropriately.
+*/
+public class WallJumpAbility : BaseAbility
     {
         public InputActionReference jumpInputAction;
         [SerializeField] private Vector2 wallJumpForce = new Vector2(10f, 15f);

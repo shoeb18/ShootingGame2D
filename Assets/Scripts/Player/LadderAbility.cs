@@ -3,7 +3,17 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class LadderAbility : BaseAbility
+    /* LadderAbility: Manages climbing on ladders and ladder animator.
+ - OnEnable()/OnDisable(): subscribe/unsubscribe climb input.
+ - Initialization(): cache animator hash and minimum ladder time.
+ - TryToClimb(): validate and enter LadderClimb state, disable gravity and enable climb.
+ - StopClimb(): handle release of climb input and reset animator/velocity.
+ - FixedUpdateAbility(): apply vertical velocity while climbing.
+ - UpdateAbility(): handle horizontal input escape, ladder exit and idle transition timing.
+ - ExitAbility(): re-enable gravity and animator.
+ - UpdateAnimator(): set ladder anim bool.
+*/
+public class LadderAbility : BaseAbility
     {
         public InputActionReference ladderActionRef;
         [SerializeField] private float climbSpeed = 10f;

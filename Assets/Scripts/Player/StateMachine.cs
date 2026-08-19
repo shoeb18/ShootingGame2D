@@ -1,6 +1,10 @@
 namespace Player
 {
-    public class StateMachine
+    /* StateMachine: Manages current/previous player state and transitions via abilities.
+ - ChangeState(State): safely exit current ability then enter new state's ability (respecting isPermitted flags).
+ - ForceChangeState(State): forcefully set current state and track previous state.
+*/
+public class StateMachine
     {
         public PlayerStates.State currentState;
         public PlayerStates.State previousState;

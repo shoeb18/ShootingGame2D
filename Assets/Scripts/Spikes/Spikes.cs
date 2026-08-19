@@ -1,6 +1,9 @@
 using Player;
 using UnityEngine;
 
+/* Spikes: Static spike hazard that damages player and triggers knockback on contact.
+ - OnTriggerEnter2D(Collider2D): apply knockback and damage to colliding player.
+*/
 public class Spikes : MonoBehaviour
 {
     [SerializeField] private float spikeDamage;

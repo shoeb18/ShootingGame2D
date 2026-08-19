@@ -2,6 +2,11 @@ using System;
 using System.IO;
 using UnityEngine;
 
+/* Checkpoint: Visual and saveable checkpoint that can be activated by the player.
+ - Start(): if a saved checkpoint matches this one, show enabled sprite.
+ - OnTriggerEnter2D/OnTriggerExit2D(Collider2D): set/remove ActivateCheckpoint.checkpoint reference on the player.
+ - Activate(): set enabled sprite and save checkpoint data via SaveLoadManager.
+*/
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;

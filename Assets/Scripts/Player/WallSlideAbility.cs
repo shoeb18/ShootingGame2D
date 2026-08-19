@@ -2,7 +2,14 @@ using UnityEngine;
 
 namespace Player
 {
-    public class WallSlideAbility : BaseAbility
+    /* WallSlideAbility: Slows descent when sliding on a wall and handles transitions.
+ - Initialization(): cache animator hash.
+ - EnterAbility(): zero velocity.
+ - UpdateAbility(): handle input-based jump-off, leaving wall slide and transitions.
+ - FixedUpdateAbility(): clamp vertical velocity for sliding.
+ - UpdateAnimator(): set wall slide animation parameter.
+*/
+public class WallSlideAbility : BaseAbility
     {
         [SerializeField] private float maxSlideSpeed;
         private string wallSlideParameterName = "WallSlide";

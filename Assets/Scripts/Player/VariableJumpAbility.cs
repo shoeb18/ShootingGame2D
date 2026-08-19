@@ -3,7 +3,17 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class VariableJumpAbility : BaseAbility
+    /* VariableJumpAbility: Variable-height jump implementation (hold to extend), with timers and gravity tweaks.
+ - Initialization(): cache animator hashes and initial minimumAirTime.
+ - OnEnable()/OnDisable(): subscribe/unsubscribe jump input.
+ - TryToJump(): handle ladder and coyote-based jumps and start timed jump state.
+ - StopJump(): cancel ongoing timed jump.
+ - UpdateAbility(): manage timers and transitions to Run/Idle/WallSlide.
+ - FixedUpdateAbility(): apply variable vertical control, clamp velocity and reduce gravity while falling.
+ - UpdateAnimator(): update jump and vertical speed parameters.
+ - ExitAbility(): restore gravity when leaving jump state.
+*/
+public class VariableJumpAbility : BaseAbility
     {
         public InputActionReference jumpAction;
         [SerializeField] private float jumpForce = 5f;

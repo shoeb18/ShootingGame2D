@@ -2,7 +2,13 @@ using UnityEngine;
 
 namespace Player
 {
-    public class BaseAbility : MonoBehaviour
+    /* BaseAbility: Base class for player abilities providing common references and lifecycle hooks.
+ - Start(): calls Initialization() to cache references.
+ - EnterAbility()/ExitAbility(): virtual hooks for entering/exiting a state.
+ - UpdateAbility()/FixedUpdateAbility()/UpdateAnimator(): per-frame hooks for subclasses.
+ - Initialization(): obtain references to PlayerCharacter, inputs, state machine, animator and physics.
+*/
+public class BaseAbility : MonoBehaviour
     {
         protected PlayerCharacter playerCharacter;
         protected PlayerInputs linkedPlayerInputs;

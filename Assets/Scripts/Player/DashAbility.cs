@@ -3,7 +3,15 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class DashAbility : BaseAbility
+    /* DashAbility: Handles dash input, movement, timer and animation.
+ - Initialization(): cache animator hash.
+ - OnEnable()/OnDisable(): subscribe/unsubscribe dash input.
+ - TryDash(): validate and initiate dash (disable gravity, set velocity, set timer).
+ - EnterAbility()/ExitAbility(): enable/disable damage invulnerability and restore physics.
+ - UpdateAbility(): countdown dash timer and transition to Idle/Jump when finished.
+ - UpdateAnimator(): update dash animation bool.
+*/
+public class DashAbility : BaseAbility
     {
         public InputActionReference dashActionRef;
         [SerializeField] private float dashForce = 10f;

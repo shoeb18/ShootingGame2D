@@ -4,6 +4,9 @@ using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/* SpawnControl: Positions player on scene start based on saved spawn or checkpoint data.
+ - Start(): find player transform, load checkpoint or spawn data and place player accordingly; handles facing direction and spawnFromCheckpoint flag.
+*/
 public class SpawnControl : MonoBehaviour
 {
     private Transform playerTransform;

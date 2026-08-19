@@ -1,6 +1,10 @@
 using Player;
 using UnityEngine;
 
+/* SwingBlade: Oscillating swinging blade that deals damage and directional knockback.
+ - Update(): animate rotation with sine wave and compute push direction.
+ - OnTriggerEnter2D(Collider2D): apply swing-direction knockback and damage to player.
+*/
 public class SwingBlade : MonoBehaviour
 {
     [Header("Swing Blade Settings")] 

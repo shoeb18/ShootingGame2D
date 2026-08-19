@@ -2,6 +2,13 @@ using System;
 using System.IO;
 using UnityEngine;
 
+/* SaveLoadManager: Generic save/load utilities and file management.
+ - Awake(): singleton setup and DontDestroyOnLoad.
+ - SaveData<T>(T,string,string): writes JSON to persistent path, ensures directories and file attributes.
+ - LoadData<T>(T,string,string): loads JSON and overwrites provided object if file exists.
+ - DeleteSaveFile(string,string): deletes a specific save file.
+ - DeleteFolder(string): deletes a folder under persistent data path.
+*/
 public class SaveLoadManager : MonoBehaviour
 {
     public static SaveLoadManager instance;

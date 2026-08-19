@@ -3,7 +3,12 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerInputs : MonoBehaviour
+    /* PlayerInputs: Reads input actions and exposes horizontal/vertical values.
+ - OnEnable()/OnDisable(): enable/disable the Player input action map.
+ - DisablePlayerInputs(): disables the player action map (used during transitions like level load).
+ - Update(): read move and vertical action values into public fields.
+*/
+public class PlayerInputs : MonoBehaviour
     {
         public PlayerInput playerInput;
         private InputActionMap playerMap;

@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/* ParallaxEffect: Moves background sprites relative to camera for parallax scrolling.
+ - Start(): cache main camera, initial camera position and sprite length.
+ - LateUpdate(): compute camera delta, move background by parallax factors and wrap sprite horizontally.
+*/
 public class ParallaxEffect : MonoBehaviour
 {
     [SerializeField] private float xParallaxValue;

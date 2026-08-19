@@ -3,7 +3,17 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class CrouchAbility : BaseAbility
+    /* CrouchAbility: Implements crouch behavior and animation.
+ - Initialization(): cache animator parameter hashes.
+ - OnEnable()/OnDisable(): subscribe/unsubscribe to crouch input.
+ - EnterAbility()/ExitAbility(): switch colliders for crouch/stand.
+ - TryToCrouch(InputAction.CallbackContext): validate and change state to Crouch.
+ - StopCrouch(InputAction.CallbackContext): handle release of crouch input and transition states.
+ - FixedUpdateAbility(): apply reduced horizontal speed while crouching on ground.
+ - UpdateAbility(): handle transitions based on inputs and ceiling detection.
+ - UpdateAnimator(): update animator parameters for crouch and speed.
+*/
+public class CrouchAbility : BaseAbility
     {
         public InputActionReference crouchActionRef;
         [SerializeField] private float crouchSpeed = 2f;

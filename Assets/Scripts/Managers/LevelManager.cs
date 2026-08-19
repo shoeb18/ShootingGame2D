@@ -3,6 +3,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+/* LevelManager: Manages scene fades and level loading.
+ - Awake(): set singleton instance.
+ - Start(): get CanvasGroup and fade to transparent on start.
+ - RestartLevel(): start fade to black then reload current level by index.
+ - LoadLevelString(string): start fade to black then load level by name.
+ - FadeToTransparent(): coroutine fading UI to transparent.
+ - FadeToBlackInt(int): coroutine fading UI to black then load by index.
+ - FadeToBlackString(string): coroutine fading UI to black then load by name.
+*/
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;

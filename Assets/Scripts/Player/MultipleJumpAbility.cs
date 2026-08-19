@@ -3,7 +3,18 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class MultipleJumpAbility : BaseAbility
+    /* MultipleJumpAbility: Handles multi-jump logic (e.g., double/triple jumps) and timers.
+ - Initialization(): set up jump counts and animator hashes.
+ - OnEnable()/OnDisable(): subscribe/unsubscribe jump input.
+ - TryToJump(): implement ground, coyote, ladder and extra-jump cases; manage timers and counts.
+ - UpdateAbility(): handle timers and transitions to Run/Idle/WallSlide.
+ - FixedUpdateAbility(): apply airborne horizontal and variable vertical control, adjust gravity on fall.
+ - UpdateAnimator(): update jump animation and vertical speed.
+ - SetMaxJumpCount(int): change max jumps at runtime.
+ - ExitAbility(): re-enable gravity and reset flags.
+ - StopJump(): stop the timed jump state.
+*/
+public class MultipleJumpAbility : BaseAbility
     {
         public InputActionReference jumpAction;
 

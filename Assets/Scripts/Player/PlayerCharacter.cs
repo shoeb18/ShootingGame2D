@@ -2,7 +2,14 @@ using UnityEngine;
 
 namespace Player
 {
-    public class PlayerCharacter : MonoBehaviour
+    /* PlayerCharacter: Root component that wires abilities, inputs, physics and animation.
+ - GetStateMachine/GetPhysicsControl/GetAnimator/GetPlayerInputs(): accessor helpers.
+ - Awake(): initialize state machine, gather abilities and cache components.
+ - Update(): calls UpdateAbility/UpdateAnimator on abilities matching current state and flips sprite.
+ - FixedUpdate(): calls FixedUpdateAbility on current ability.
+ - FlipPlayer()/ForceFlipPlayer(): flip the transform to face movement direction.
+*/
+public class PlayerCharacter : MonoBehaviour
     {
         private PlayerInputs playerInputs;
         private StateMachine stateMachine;

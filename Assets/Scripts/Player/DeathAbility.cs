@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 
+/* DeathAbility: Handles player death state and reset sequence.
+ - EnterAbility(): disable inputs, reset velocity, set spawn-from-checkpoint flag and play death animation.
+ - ResetGame(): load checkpoint scene if checkpoint save exists, otherwise restart current level.
+*/
 public class DeathAbility : BaseAbility
 {
     public override void EnterAbility()

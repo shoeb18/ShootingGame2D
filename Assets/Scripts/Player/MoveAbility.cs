@@ -2,7 +2,14 @@ using UnityEngine;
 
 namespace Player
 {
-    public class MoveAbility : BaseAbility
+    /* MoveAbility: Ground movement (running) logic and animation.
+ - Initialization(): cache animator hash.
+ - EnterAbility(): flip player to face movement direction.
+ - UpdateAbility(): transition to Idle or Jump based on grounded and input.
+ - FixedUpdateAbility(): set horizontal velocity based on moveSpeed and input.
+ - UpdateAnimator(): set run animation parameter.
+*/
+public class MoveAbility : BaseAbility
     {
         [SerializeField] private float moveSpeed = 5f;
         private string moveAnimParameterName = "Run";

@@ -1,6 +1,8 @@
 namespace Player
 {
-    public class PlayerStates
+    /* PlayerStates: Enumeration of possible player states used by the StateMachine.
+*/
+public class PlayerStates
     {
         public enum State
         {

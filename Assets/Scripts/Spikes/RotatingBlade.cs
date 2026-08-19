@@ -2,6 +2,10 @@ using System;
 using Player;
 using UnityEngine;
 
+/* RotatingBlade: Rotates the blade and applies damage/knockback to player on contact.
+ - Update(): rotate object continuously.
+ - OnTriggerEnter2D(Collider2D): start knockback on player and apply damage via PlayerStats.
+*/
 public class RotatingBlade : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed;

@@ -2,7 +2,13 @@ using UnityEngine;
 
 namespace Player
 {
-    public class IdleAbility : BaseAbility
+    /* IdleAbility: Handles idle state logic and animation.
+ - Initialization(): cache animator hash.
+ - EnterAbility(): zero horizontal velocity.
+ - UpdateAbility(): switch to Run when horizontal input present.
+ - UpdateAnimator(): set idle animation parameter.
+*/
+public class IdleAbility : BaseAbility
     {
         private string idleAnimParameterName = "Idle";
         private int idleAnimHash;

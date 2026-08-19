@@ -2,7 +2,21 @@ using UnityEngine;
 
 namespace Player
 {
-    public class PhysicsControl : MonoBehaviour
+    /* PhysicsControl: Centralized physics checks and helper methods for the player.
+ - Awake(): cache Rigidbody2D.
+ - Start(): store default gravity and coyote timer setup.
+ - GetGravity(): returns stored gravity value.
+ - OnDrawGizmos(): draw debug rays for ceiling checks.
+ - DisableGravity()/EnableGravity(): toggle gravityScale.
+ - ResetVelocity(): zero Rigidbody velocity.
+ - IsGrounded(): raycast down to detect ground.
+ - IsTouchingWall(): raycasts to detect wall contacts.
+ - IsCeilingDetected(): raycasts upwards to detect ceiling.
+ - Update(): update coyote timer when airborne.
+ - FixedUpdate(): update grounded/wall/ceiling booleans each physics step.
+ - StandCollider()/CrouchCollider(): toggle colliders for standing/crouching.
+*/
+public class PhysicsControl : MonoBehaviour
     {
         public Rigidbody2D rb;
 

@@ -4,7 +4,17 @@ using UnityEngine.Serialization;
 
 namespace Player
 {
-    public class PlayerStats : MonoBehaviour
+    /* PlayerStats: Tracks health, flashing damage effect and collider swapping for crouch/stand.
+ - EnableStandingCollider/EnableCrouchingCollider(): switch current collider based on state.
+ - Awake(): cache sprite renderer.
+ - Start(): initialize health and UI, store default material.
+ - GetCurrentHealth(): accessor for current health.
+ - EnableDamage()/DisableDamage(): toggle invulnerability flag.
+ - DamagePlayer(float): apply damage, update UI and trigger flash; handle death state change.
+ - Flash(): coroutine that swaps material to flash effect then restores material and invulnerability.
+ - GetCanTakeDamage(): returns whether player can currently be damaged.
+*/
+public class PlayerStats : MonoBehaviour
     {
         [Header("Health")]
         [SerializeField] private float maxHealth;
