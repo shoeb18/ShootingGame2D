@@ -66,6 +66,11 @@ public class PhysicsControl : MonoBehaviour
             gravityValue = rb.gravityScale;
             coyoteTimer = coyoteSetTime;
         }
+        
+        public void SetInterpolationMode(RigidbodyInterpolation2D mode)
+        {
+            rb.interpolation = mode;
+        }
 
         public float GetGravity()
         {
