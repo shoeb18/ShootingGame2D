@@ -289,9 +289,45 @@ PrefabInstance:
       propertyPath: healthBarControl
       value: 
       objectReference: {fileID: 1947163597}
+    - target: {fileID: 1234805993285822480, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234805993285822480, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_Color.b
+      value: 0.09885316
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234805993285822480, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234805993285822480, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2126680687576838817, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
       propertyPath: m_Name
       value: TestPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354345202690376565, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354345202690376565, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354345202690376565, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354345202690376565, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130925438445972690, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659023359954006706, guid: 0f5c7d0b2c0770c48aa88f55df11f680, type: 3}
       propertyPath: m_LocalPosition.x
