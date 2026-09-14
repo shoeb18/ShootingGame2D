@@ -36,34 +36,43 @@ public class PlayerStats : MonoBehaviour
         [SerializeField] private Collider2D crouchingCollider;
         private Collider2D currentCollider;
 
-        public void EnableStandingCollider()
-        {
-            if (currentHealth <= 0) return;
-            currentCollider = standingCollider;
-            standingCollider.enabled = true;
-            crouchingCollider.enabled = false;
-        }
-
-        public void EnableCrouchingCollider()
-        {
-            if (currentHealth <= 0) return;
-            currentCollider = crouchingCollider;
-            crouchingCollider.enabled = true;
-            standingCollider.enabled = false;
-        }
-        
-
         private void Awake()
         {
             spriteRenderer = GetComponentInParent<SpriteRenderer>();
         }
-
 
         void Start()
         {
             currentHealth = maxHealth;
             healthBarControl.SetSliderValue(currentHealth, maxHealth);
             defaultMaterial = spriteRenderer.material;
+            currentCollider = standingCollider;
+        }
+
+        public void EnableStandingCollider()
+        {
+            if (currentHealth <= 0) return;
+            standingCollider.enabled = true;
+            crouchingCollider.enabled = false;
+            currentCollider = standingCollider;
+        }
+
+        public void EnableCrouchingCollider()
+        {
+            if (currentHealth <= 0) return;
+            crouchingCollider.enabled = true;
+            standingCollider.enabled = false;
+            currentCollider = crouchingCollider;
+        }
+        
+        public void EnableCurrentCollider()
+        {
+            currentCollider.enabled = true;
+        }
+        
+        public void DisableCurrentCollider()
+        {
+            currentCollider.enabled = false;
         }
 
         public float GetCurrentHealth()
@@ -90,6 +99,8 @@ public class PlayerStats : MonoBehaviour
 
             if (currentHealth <= 0)
             {
+                DisableCurrentCollider();
+                
                 if (playerCharacter.GetStateMachine().currentState != PlayerStates.State.KnockBack)
                     playerCharacter.GetStateMachine().ChangeState(PlayerStates.State.Death);
             }
